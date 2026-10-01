@@ -81,7 +81,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
     <header
       ref={containerRef}
       id="hero-section"
-      className="min-h-screen min-h-[100svh] w-full relative bg-[#FAF9F6] selection:bg-lime-300 selection:text-black overflow-hidden flex flex-col items-center justify-center pt-16 pb-16"
+      className="min-h-screen min-h-[100svh] w-full relative bg-[#FAF9F6] selection:bg-lime-300 selection:text-black overflow-hidden flex flex-col items-center justify-center pt-16 pb-16 min-[1600px]:min-h-[104svh]"
     >
       {/* ── BACKGROUND ENGINEERING Grid & Dynamic Glow ── */}
       <Gsap.div
@@ -167,31 +167,55 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
       </Gsap.div>
 
       {/* ── PORTRAIT ──
-          Transparent source cutout keeps the subject sharp and lets the hero
-          background remain visible around the natural silhouette. */}
+          Landscape source (1671x941) laid over the whole header as a cover
+          layer, so the hero is fully filled at startup and every content layer
+          stacks above it. The image carries a small scale so the drift never
+          exposes an edge, and the bottom fade carries it into the next section
+          the way the background layer already does.
+
+          Below sm the landscape frame is cropped so hard on a narrow phone
+          that the subject is lost, so a near-square phone-specific frame
+          (1277x1232) is swapped in. Its top half is near-black (mean
+          luminance 3) and the lower half is light, so the focal offset is
+          pulled up to keep the subject in frame above the headline. */}
       <Gsap.div
         initial={false}
-        animate={isRevealed && !reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-        transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute bottom-0 right-[6vw] z-[5] hidden 2xl:block"
+        animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
       >
-        <Gsap.div style={enableParallax ? { y: portraitY } : undefined}>
-          <img
-            src={asset('/portrait.png')}
-            alt="Saurabh Kumar"
-            width={1276}
-            height={1233}
-            loading="eager"
-            decoding="async"
-            draggable={false}
-            className="block w-[min(45vw,82svh)] h-auto object-contain object-bottom select-none"
-          />
+        <Gsap.div
+          style={enableParallax ? { y: portraitY } : undefined}
+          className="absolute inset-0"
+        >
+          <picture className="block h-full w-full">
+            {/* Phones only: swaps in the near-square phone frame. The parent
+                clip and the scale stay put, so nothing else about the layer
+                changes between the two sources. Focal offset is raised on
+                phones so the subject sits in the upper half of that frame,
+                clear of the centred text. */}
+            <source
+              media="(max-width: 639px)"
+              srcSet={asset('/center-top-image-only-smartphone.png')}
+            />
+            <img
+              src={asset('/portrait.png')}
+              alt="Saurabh Kumar"
+              width={1671}
+              height={941}
+              loading="eager"
+              decoding="async"
+              draggable={false}
+              className="block h-full w-full object-cover object-[center_62%] max-sm:object-[center_28%] scale-[1.08] select-none"
+            />
+          </picture>
         </Gsap.div>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FAF9F6] to-transparent" />
       </Gsap.div>
 
       {/* ── MAIN CONTENT ──
-          Centred below 1536px. At 2xl+ the .hero-split class left-aligns the
-          stack and stretches it toward the portrait (see index.css). */}
+          Stacked above the portrait layer. Centred below 1536px; at 2xl+ the
+          .hero-split class moves the stack to the left edge (see index.css). */}
       {/* Parallax wrapper (scroll-driven y only) */}
       <Gsap.div
         style={enableParallax ? { y: contentY } : undefined}

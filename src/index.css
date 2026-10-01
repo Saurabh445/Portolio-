@@ -298,19 +298,18 @@ html.lenis body {
 }
 
 /* ============================================
-   Hero: editorial split at 2xl+
+   Hero: left-aligned text over the full-bleed portrait
    ============================================ */
-/* At >=1536px the portrait owns the right column, so the text stack becomes
-   left-aligned and stretches toward it instead of sitting as a centred column.
+/* Below 1536px the text stays centred. At 2xl+ it moves to the left edge so it
+   sits over the quieter side of the cover image instead of straddling the
+   subject, which is anchored toward the lower centre of the frame.
 
-   The block width is derived from the portrait's own sizing (right 6vw plus
-   width min(34vw, 47.2svh)) rather than a fixed percentage, so the gap between
-   the text and the figure stays pinned at 5rem at every viewport size instead
-   of drifting wider on large screens. */
+   The width is a plain fraction of the viewport — there is no figure beside it
+   any more, so no column has to be reserved. */
 @media (min-width: 1536px) {
   .hero-split {
     align-self: flex-start;
-    max-width: calc(94vw - min(34vw, 47.2svh) - 5rem);
+    max-width: min(1200px, 56vw);
     margin-right: auto;
     align-items: flex-start;
     text-align: left;

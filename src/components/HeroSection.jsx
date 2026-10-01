@@ -173,27 +173,27 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           exposes an edge, and the bottom fade carries it into the next section
           the way the background layer already does.
 
-          Below sm the landscape frame is cropped so hard on a narrow phone
-          that the subject is lost, so a near-square phone-specific frame
-          (1277x1232) is swapped in. Its top half is near-black (mean
-          luminance 3) and the lower half is light, so the focal offset is
-          pulled up to keep the subject in frame above the headline. */}
+          Below sm the landscape frame is cropped so hard on a narrow phone that the
+          subject is lost, so a near-square phone-specific frame (1277x1232) is
+          swapped in and shown whole above the name instead of as a backdrop. */}
       <Gsap.div
         initial={false}
         animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+        /* Phones: the frame sits in the flow directly above the name, small and
+           uncropped, so it reads as a figure rather than a backdrop. It has to
+           leave the flow here, otherwise it would push the text off screen.
+           Everything from sm up keeps the full-bleed cover treatment. */
+        className="pointer-events-none max-sm:relative max-sm:inset-auto max-sm:z-0 max-sm:w-full max-sm:flex-none absolute inset-0 z-[1] overflow-hidden"
       >
         <Gsap.div
           style={enableParallax ? { y: portraitY } : undefined}
-          className="absolute inset-0"
+          className="max-sm:relative max-sm:w-full absolute inset-0"
         >
-          <picture className="block h-full w-full">
+          <picture className="block max-sm:w-full sm:h-full sm:w-full">
             {/* Phones only: swaps in the near-square phone frame. The parent
                 clip and the scale stay put, so nothing else about the layer
-                changes between the two sources. Focal offset is raised on
-                phones so the subject sits in the upper half of that frame,
-                clear of the centred text. */}
+                changes between the two sources. */}
             <source
               media="(max-width: 639px)"
               srcSet={asset('/center-top-image-only-smartphone.png')}
@@ -206,11 +206,13 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
               loading="eager"
               decoding="async"
               draggable={false}
-              className="block h-full w-full object-cover object-[center_62%] max-sm:object-[center_28%] scale-[1.08] select-none"
+              /* Phone: full frame, no crop, capped height, centred. sm and up:
+                 the cover treatment that fills the header. */
+              className="block max-sm:h-auto max-sm:max-h-[42svh] max-sm:w-auto max-sm:max-w-[min(76vw,30rem)] max-sm:object-contain max-sm:mx-auto max-sm:scale-100 h-full w-full object-cover object-[center_62%] scale-[1.08] select-none"
             />
           </picture>
         </Gsap.div>
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FAF9F6] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 max-sm:hidden bg-gradient-to-t from-[#FAF9F6] to-transparent" />
       </Gsap.div>
 
       {/* ── MAIN CONTENT ──

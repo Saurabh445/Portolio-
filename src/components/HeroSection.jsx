@@ -168,12 +168,8 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           the way the background layer already does.
 
           Below sm the landscape frame is cropped so hard on a narrow phone that the
-          subject is lost, so a near-square phone-specific frame (1277x1232) is
+          subject is lost, so a phone-specific transparent cutout (509x491) is
           swapped in and shown whole above the name instead of as a backdrop. */}
-      /* Phones: the frame sits in the flow directly above the name, small and
-         uncropped, so it reads as a figure rather than a backdrop. It has to
-         leave the flow here, otherwise it would push the text off screen.
-         Everything from sm up keeps the full-bleed cover treatment. */
       <Gsap.div
         className="pointer-events-none max-sm:relative max-sm:inset-auto max-sm:z-0 max-sm:w-full max-sm:flex-none hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
           style={{ '--enter-delay': '0.12s' }}

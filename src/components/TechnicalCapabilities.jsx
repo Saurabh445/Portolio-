@@ -40,20 +40,6 @@ const TechnicalCapabilities = memo(function TechnicalCapabilities() {
     <section id="capabilities-section" className="pt-24 pb-32 w-full relative bg-[#FAF9F6] overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
 
-        {/* ── SECTION HEADER ── */}
-        <Gsap.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 mb-20 md:mb-24"
-        >
-          <div className="w-8 h-[2px] bg-black" />
-          <span className="font-mono text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.14em] sm:tracking-[0.18em] md:tracking-[0.26em] text-black">
-            05. Capabilities_Matrix
-          </span>
-          <div className="w-8 h-[2px] bg-black" />
-        </Gsap.div>
-
         {/* Big Title Area - CENTERED */}
         <div className="mb-20 md:mb-28 flex flex-col items-center text-center max-w-4xl mx-auto">
           <Gsap.h2

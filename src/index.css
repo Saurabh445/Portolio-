@@ -324,6 +324,58 @@ html.lenis body {
 }
 
 /* ============================================
+   Case studies: typography repairs (internal detail pages)
+   ============================================ */
+/* Two global rules fight the case-study pages, and both are unlayered so they
+   also beat Tailwind utilities:
+
+   `p, li { font-weight: 300 }` flattened every paragraph, including the ones
+   that explicitly ask for font-bold, which is why body copy and the mono
+   sub-statements both read as under-set. These restore the intended weights,
+   but only inside a case study so nothing else in the portfolio shifts.
+
+   700 is the heaviest weight Space Grotesk actually ships (wght 300-700), so
+   display type asks for 700 rather than a font-black that silently clamps. */
+[data-case-study] p,
+[data-case-study] li {
+  font-weight: 400;
+}
+
+[data-case-study] .font-bold {
+  font-weight: 700;
+}
+
+[data-case-study] .font-semibold {
+  font-weight: 600;
+}
+
+[data-case-study] .font-medium {
+  font-weight: 500;
+}
+
+/* The stroked hero line. Solid black first so engines without
+   -webkit-text-stroke still show the words, transparent + stroked once the
+   property is supported. Stroke thins with the viewport because a 2px hairline
+   eats a 24px mobile headline. */
+.cs-outline {
+  color: #000;
+}
+
+@supports (-webkit-text-stroke: 1px black) {
+  .cs-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: none;
+  }
+
+  @media (min-width: 768px) {
+    .cs-outline {
+      -webkit-text-stroke-width: 2px;
+    }
+  }
+}
+
+/* ============================================
    Performance: Content Visibility & Containment
    ============================================ */
 

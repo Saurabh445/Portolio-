@@ -115,20 +115,6 @@ const MyApproach = () => {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-        {/* ── SECTION HEADER ── */}
-        <Gsap.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-4 mb-16 md:mb-20"
-        >
-          <div className="w-2 h-2 bg-lime-400 rounded-full shadow-[0_0_8px_rgba(163,230,53,0.8)]" />
-          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] md:tracking-[0.26em] text-white/40">
-            04. My_Approach
-          </span>
-          <div className="flex-1 h-[1px] bg-white/10" />
-        </Gsap.div>
-
         {/* ── TITLE + INTRO ── */}
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-16 items-end mb-20 md:mb-28">
           <Gsap.h2

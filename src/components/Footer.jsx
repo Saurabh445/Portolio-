@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { Gsap } from '../utils/gsapAnimate';
 
 const Footer = memo(function Footer() {
   return (
@@ -10,20 +9,6 @@ const Footer = memo(function Footer() {
       />
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 md:px-12 relative z-10 flex flex-col justify-between min-h-[50vh]">
-
-        {/* ── SECTION HEADER ── */}
-        <Gsap.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-4 mb-16 md:mb-24"
-        >
-          <div className="w-2 h-2 bg-lime-400 rounded-[2px] animate-pulse" />
-          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] md:tracking-[0.26em] text-white/40">
-            {'// INITIALIZE_CONTACT'}
-          </span>
-          <div className="flex-1 h-[1px] bg-white/10" />
-        </Gsap.div>
 
         {/* Main Grid Layout */}
         <div className="flex flex-col lg:flex-row justify-between gap-12 md:gap-16 lg:gap-8 mb-20 md:mb-24">
@@ -49,14 +34,14 @@ const Footer = memo(function Footer() {
               { label: 'Instagram', value: 'https://www.instagram.com/_saurabh____k_?stkn=ZnUzN2g3cjZ0MWF5&utm_source=qr', href: 'https://www.instagram.com/_saurabh____k_?stkn=ZnUzN2g3cjZ0MWF5&utm_source=qr', external: true }
             ].map((item) => (
               <div key={item.label} className="min-w-0">
-                <span className="font-mono text-[10px] text-white/30 uppercase tracking-[0.18em] md:tracking-[0.24em]">
+                <span className="font-mono text-[11px] md:text-xs text-white/45 uppercase tracking-[0.18em] md:tracking-[0.22em]">
                   {item.label}
                 </span>
                 <a
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="mt-3 block font-mono text-xs md:text-sm font-bold text-white/65 hover:text-lime-400 transition-colors break-words"
+                  className="mt-2.5 block font-mono text-[0.9375rem] md:text-lg font-bold text-white/85 hover:text-lime-400 transition-colors break-words leading-relaxed"
                 >
                   {item.value}
                 </a>

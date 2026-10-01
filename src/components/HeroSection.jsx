@@ -173,7 +173,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
         initial={false}
         animate={isRevealed && !reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
         transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute bottom-0 right-[2vw] z-[5] hidden 2xl:block"
+        className="pointer-events-none absolute bottom-0 right-[6vw] z-[5] hidden 2xl:block"
       >
         <Gsap.div style={enableParallax ? { y: portraitY } : undefined}>
           <img

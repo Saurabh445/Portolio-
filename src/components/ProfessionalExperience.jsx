@@ -160,14 +160,6 @@ const ProfessionalExperience = () => {
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex items-center gap-3 mb-14 md:mb-16">
-          <span className="w-[6px] h-[6px] rounded-full bg-lime-500 shrink-0" />
-          <span className="font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-[0.24em] text-black/32">
-            03 - Experience
-          </span>
-          <div className="flex-1 h-px bg-black/[0.07]" />
-        </div>
-
         <div className="grid lg:grid-cols-[360px_1fr] gap-10 lg:gap-14 items-start min-w-0">
           <aside className="lg:sticky lg:top-24 min-w-0">
             <h2 className="text-[34px] sm:text-[46px] lg:text-[56px] font-black uppercase tracking-[-0.03em] leading-[0.95] text-black">

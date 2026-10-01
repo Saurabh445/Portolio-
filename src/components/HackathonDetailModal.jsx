@@ -5,11 +5,17 @@ import { X, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 import BeckkonStory from './beckkon/BeckkonStory';
 import { asset } from '../utils/assets';
 
-/* ─── Image data (compressed WebP) ───────── */
+/* ─── Beckkon Systems gallery ───────── */
 const galleryImages = [
-    { src: asset('/photo-1.webp'), alt: 'Beckkon Systems - Saurabh Kumar' },
-    { src: asset('/photo-2.webp'), alt: 'Beckkon Systems - Product and Technology' },
-    { src: asset('/photo-3.webp'), alt: 'Beckkon Systems - Team and Execution' },
+    { src: asset('/beckkon/beckkon-1.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-2.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-3.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-4.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-5.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-6.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-7.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-8.jpg'), alt: 'Beckkon Systems' },
+    { src: asset('/beckkon/beckkon-9.jpg'), alt: 'Beckkon Systems' },
 ];
 
 /* ─── Image Carousel ────────────────────────────────────── */

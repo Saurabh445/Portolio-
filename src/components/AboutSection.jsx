@@ -135,20 +135,6 @@ const AboutSection = memo(function AboutSection() {
       <div className="max-w-[1380px] mx-auto px-6 md:px-12 relative z-10">
 
         {/* ── Section Label ── */}
-        <Gsap.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-16 md:mb-20"
-        >
-          <span className="w-[6px] h-[6px] rounded-full bg-lime-500 shrink-0" />
-          <span className="font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-[0.24em] text-black/32">
-            01 — About
-          </span>
-          <div className="flex-1 h-px bg-black/[0.07]" />
-        </Gsap.div>
-
         <div className="grid lg:grid-cols-[400px_1fr] xl:grid-cols-[440px_1fr] gap-x-14 lg:gap-x-20 xl:gap-x-28 gap-y-12 md:gap-y-14 items-start">
 
           {/* ══════════════════════════════
@@ -159,7 +145,10 @@ const AboutSection = memo(function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:sticky lg:top-28"
+            /* The photo is pulled up slightly so its top edge (minus the offset
+               border, which sits 10px above it) lines up with the cap height of
+               "Founder & CEO" instead of starting below it. */
+            className="lg:sticky lg:top-28 lg:-mt-6"
           >
             {/* Profile image with decorative offset border */}
             <div className="relative">
@@ -208,11 +197,6 @@ const AboutSection = memo(function AboutSection() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="mb-8 md:mb-10"
             >
-              {/* Eyebrow */}
-              <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-black/30 mb-5">
-                Based in Varanasi, India — Open to Collaboration
-              </p>
-
               {/* Main title */}
               <h2 className="font-display font-bold tracking-[-0.025em] leading-[1.08] text-black">
                 <span className="block text-[44px] sm:text-[56px] lg:text-[64px] xl:text-[72px]">
@@ -273,9 +257,6 @@ const AboutSection = memo(function AboutSection() {
               <div className="mx-auto w-full max-w-[940px]">
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-[5px] h-[5px] rounded-full bg-lime-500 shrink-0" />
-                  <p className="font-mono text-[9.5px] md:text-[10px] uppercase tracking-[0.22em] text-black/40">
-                    Notable Achievements
-                  </p>
                   <div className="flex-1 h-px bg-gradient-to-r from-black/[0.1] to-transparent" />
                   <span className="font-mono text-[9px] font-bold border border-black/[0.1] bg-white px-2.5 py-1 rounded-[2px] text-black/35 tabular-nums">
                     {achievements.length} Award{achievements.length !== 1 ? 's' : ''}

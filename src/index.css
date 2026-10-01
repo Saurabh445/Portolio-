@@ -263,17 +263,13 @@ html.lenis body {
 /* ============================================
    Safe-area helpers
    ============================================ */
-/* Fixed UI (navbar, chat launcher, preloader, footer) has to clear the notch
-   and the home indicator. env() resolves to 0 on desktop and the max() floor
-   matches the original spacing, so desktop rendering is byte-identical. */
+/* Fixed UI (navbar, footer) has to clear the notch and the home indicator.
+   env() resolves to 0 on desktop and the max() floor matches the original
+   spacing, so desktop rendering is byte-identical. */
 @layer utilities {
 
   .pt-safe-4 {
     padding-top: max(1rem, env(safe-area-inset-top));
-  }
-
-  .pt-safe-6 {
-    padding-top: max(1.5rem, env(safe-area-inset-top));
   }
 
   .pt-safe-menu {
@@ -282,10 +278,6 @@ html.lenis body {
 
   .pb-safe-4 {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
-  }
-
-  .pb-safe-6 {
-    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 
   .pb-safe-12 {

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { exponentialEaseOut } from '../utils/easing';
 
-const useScrollToGallery = (galleryRef, isLoading) => {
+const useScrollToGallery = (galleryRef) => {
   const location = useLocation();
 
   const smoothScrollTo = (target, onComplete) => {
@@ -22,74 +22,86 @@ const useScrollToGallery = (galleryRef, isLoading) => {
   };
 
   useEffect(() => {
-    if (isLoading) return;
     let cancelled = false;
 
     const params = new URLSearchParams(location.search);
     const scrollTo = params.get('scrollTo');
 
-    if (scrollTo && scrollTo.startsWith('project-')) {
-      const scrollToGallery = async () => {
-        if (!galleryRef.current) return;
-
-        const section = galleryRef.current;
-        if (!section) return;
-
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight || window.innerHeight;
-        const offset = Math.min(sectionHeight * 0.3, 300);
-        const targetScrollPosition = sectionTop + offset;
-
-        const track = section.querySelector('.flex.gap-6') || section.querySelector('.flex.gap-12');
-        if (!track) {
-          smoothScrollTo(targetScrollPosition);
-          return;
-        }
-
-        const [gsapModule, { ScrollTrigger }] = await Promise.all([
-          import('gsap'),
-          import('gsap/ScrollTrigger'),
-        ]);
-        if (cancelled) return;
-        const gsap = gsapModule.default || gsapModule.gsap;
-
-        const stInstances = ScrollTrigger.getAll().filter(st => st.trigger === section);
-        const st = stInstances[0];
-
-        if (st) {
-          gsap.set(track, { x: 0 });
-          ScrollTrigger.refresh();
-
-          requestAnimationFrame(() => {
-            smoothScrollTo(targetScrollPosition, () => {
-              ScrollTrigger.refresh();
-            });
-          });
-        } else {
-          // Fallback
-          gsap.set(track, { x: 0 });
-          ScrollTrigger.refresh();
-
-          smoothScrollTo(targetScrollPosition, () => { ScrollTrigger.refresh(); });
-        }
-      };
-
-      const timer = setTimeout(() => { scrollToGallery(); }, 300);
-
-      setTimeout(() => {
-        window.history.replaceState({}, '', '/');
-      }, 100);
-
-      return () => {
-        cancelled = true;
-        clearTimeout(timer);
-      };
+    if (!scrollTo || !scrollTo.startsWith('project-')) {
+      return () => { cancelled = true; };
     }
+
+    const findTrack = () => {
+      const section = galleryRef.current;
+      if (!section) return null;
+      return section.querySelector('.flex.gap-6, .flex.gap-6.md\\:gap-12, .flex.gap-12, .flex.gap-6.md\\:gap-12.items-start, .flex.gap-12.items-start');
+    };
+
+    const waitForTrack = (maxMs = 6000) => new Promise((resolve) => {
+      const started = performance.now();
+      const existing = findTrack();
+      if (existing) { resolve(existing); return; }
+
+      const observer = new MutationObserver(() => {
+        const t = findTrack();
+        if (t) { observer.disconnect(); resolve(t); }
+      });
+
+      const section = galleryRef.current;
+      if (section) observer.observe(section, { childList: true, subtree: true });
+
+      const tick = () => {
+        if (cancelled) { observer.disconnect(); resolve(null); return; }
+        const t = findTrack();
+        if (t) { observer.disconnect(); resolve(t); return; }
+        if (performance.now() - started > maxMs) { observer.disconnect(); resolve(null); return; }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+
+    const scrollToGallery = async () => {
+      if (cancelled) return;
+      const section = galleryRef.current;
+      if (!section) return;
+
+      const track = await waitForTrack();
+      if (cancelled || !track) return;
+
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight || window.innerHeight;
+      const offset = Math.min(sectionHeight * 0.3, 300);
+      const targetScrollPosition = sectionTop + offset;
+
+      const [gsapModule, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ]);
+      if (cancelled) return;
+      const gsap = gsapModule.default || gsapModule.gsap;
+
+      gsap.set(track, { x: 0 });
+      ScrollTrigger.refresh();
+
+      requestAnimationFrame(() => {
+        if (cancelled) return;
+        smoothScrollTo(targetScrollPosition, () => {
+          ScrollTrigger.refresh();
+        });
+      });
+    };
+
+    const timer = setTimeout(() => { scrollToGallery(); }, 150);
+
+    setTimeout(() => {
+      window.history.replaceState({}, '', '/');
+    }, 100);
 
     return () => {
       cancelled = true;
+      clearTimeout(timer);
     };
-  }, [location.search, isLoading, galleryRef]);
+  }, [location.search, galleryRef]);
 };
 
 export default useScrollToGallery;

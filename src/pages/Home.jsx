@@ -1,6 +1,5 @@
-import { useEffect, useState, useRef, lazy, Suspense, useCallback } from 'react';
+import { useEffect, useRef, useState, lazy, Suspense, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Preloader from '../components/Preloader';
 import Cursor from '../components/Cursor';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
@@ -20,16 +19,13 @@ export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const galleryRef = useRef(null);
-
-  /* Refactored Loading & Scroll Logic */
-  const [isLoading, setIsLoading] = useState(true);
-  const [isScrollLocked, setIsScrollLocked] = useState(true);
   const [enableNoiseOverlay, setEnableNoiseOverlay] = useState(false);
 
-  // Initialize Lenis with scroll lock state
-  useLenis(isScrollLocked);
+  /* No preloader and no scroll lock: Lenis starts enabled and the hero plays
+     its own entrance as soon as React mounts. */
+  useLenis(false);
 
-  useScrollToGallery(galleryRef, isLoading);
+  useScrollToGallery(galleryRef);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -38,17 +34,6 @@ export default function Home() {
       setEnableNoiseOverlay(isFinePointer && !reduceMotion);
     }
   }, []);
-
-  // Manage body overflow based on scroll lock
-  useEffect(() => {
-    if (isScrollLocked) {
-      document.body.style.overflow = 'hidden';
-      // Safety check: ensure strict scroll reset
-      window.scrollTo(0, 0);
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isScrollLocked]);
 
   const handleOpenProject = useCallback((project) => {
     if (!project?.slug) return;
@@ -59,15 +44,6 @@ export default function Home() {
 
   return (
     <div className="bg-[#FAF9F6] text-black selection:bg-lime-400 selection:text-black relative">
-      {isLoading && (
-        <Preloader
-          onComplete={() => {
-            setIsLoading(false);
-            setIsScrollLocked(false);
-          }}
-        />
-      )}
-
       {enableNoiseOverlay && <Suspense fallback={null}><NoiseOverlay /></Suspense>}
 
       <Cursor />

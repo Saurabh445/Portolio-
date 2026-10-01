@@ -4,29 +4,25 @@ import { Terminal, Code2, Database, Cpu, Download } from 'lucide-react';
 import { asset } from '../utils/assets';
 
 // === DECORATIVE ORBITING ELEMENTS (Left & Right) ===
-const OrbitingDecoration = ({ icon: Icon, delay, className, isRevealed, enableAmbientMotion }) => (
+// The entrance and the idle float are two animations on one element, so they
+// are combined into a single `animation` list rather than competing over
+// `transform`.
+const OrbitingDecoration = ({ icon: Icon, delay, className, isRevealed, enableAmbientMotion }) => {
+  const entrance = `hero-chip 0.9s ${delay}s cubic-bezier(0.22, 1, 0.36, 1) both`;
+
+  return (
   <Gsap.div
-    initial={false}
-    animate={
-      isRevealed
-        ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 12, scale: 0.9 }
-    }
-    transition={{
-      opacity: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
-      y: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
-      scale: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
-    }}
     className={`absolute flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-lime-500/20 bg-white/60 backdrop-blur-lg shadow-[0_10px_30px_rgba(132,204,22,0.12)] ${className}`}
     style={enableAmbientMotion && isRevealed ? {
-      animation: `hero-float 5.8s ${delay + 0.35}s ease-in-out infinite`,
+      animation: `${entrance}, hero-float 5.8s ${delay + 0.9}s ease-in-out infinite`,
       willChange: 'transform',
-    } : undefined}
+    } : { animation: entrance }}
   >
     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-lime-300/25 to-transparent" />
     <Icon size={18} className="relative text-black/65" />
   </Gsap.div>
-);
+  );
+};
 
 // === MAIN COMPONENT ===
 const HeroSection = memo(function HeroSection({ isRevealed = true }) {
@@ -85,11 +81,9 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
     >
       {/* ── BACKGROUND ENGINEERING Grid & Dynamic Glow ── */}
       <Gsap.div
-        initial={false}
-        animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         style={enableParallax ? { y: bgY } : undefined}
-        className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center"
+        className="hero-enter hero-enter-fade absolute inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center"
+        style={{ y: enableParallax ? bgY : undefined, '--enter-delay': '0s' }}
       >
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(163,230,53,0.12),transparent_48%),linear-gradient(to_bottom,rgba(163,230,53,0.04),transparent_48%)]" />
@@ -176,15 +170,13 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           Below sm the landscape frame is cropped so hard on a narrow phone that the
           subject is lost, so a near-square phone-specific frame (1277x1232) is
           swapped in and shown whole above the name instead of as a backdrop. */}
+      /* Phones: the frame sits in the flow directly above the name, small and
+         uncropped, so it reads as a figure rather than a backdrop. It has to
+         leave the flow here, otherwise it would push the text off screen.
+         Everything from sm up keeps the full-bleed cover treatment. */
       <Gsap.div
-        initial={false}
-        animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        /* Phones: the frame sits in the flow directly above the name, small and
-           uncropped, so it reads as a figure rather than a backdrop. It has to
-           leave the flow here, otherwise it would push the text off screen.
-           Everything from sm up keeps the full-bleed cover treatment. */
-        className="pointer-events-none max-sm:relative max-sm:inset-auto max-sm:z-0 max-sm:w-full max-sm:flex-none absolute inset-0 z-[1] overflow-hidden"
+        className="pointer-events-none max-sm:relative max-sm:inset-auto max-sm:z-0 max-sm:w-full max-sm:flex-none hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
+          style={{ '--enter-delay': '0.12s' }}
       >
         <Gsap.div
           style={enableParallax ? { y: portraitY } : undefined}
@@ -197,18 +189,26 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
             <source
               media="(max-width: 639px)"
               srcSet={asset('/center-top-image-only-smartphone.png')}
+              width="509"
+              height="491"
             />
             <img
               src={asset('/portrait.png')}
               alt="Saurabh Kumar"
+              /* Intrinsic size of the fallback source. The phone <source> below
+                 is 509x491 and is media-preloaded, so the correct aspect ratio
+                 is already in cache when the img paints. */
               width={1671}
               height={941}
               loading="eager"
               decoding="async"
               draggable={false}
-              /* Phone: full frame, no crop, capped height, centred. sm and up:
-                 the cover treatment that fills the header. */
-              className="block max-sm:h-auto max-sm:max-h-[42svh] max-sm:w-auto max-sm:max-w-[min(76vw,30rem)] max-sm:object-contain max-sm:mx-auto max-sm:scale-100 h-full w-full object-cover object-[center_62%] scale-[1.08] select-none"
+              /* Phone: the frame is now a pre-cut 509x491 RGBA figure, so it is shown
+                 whole — no cover, no crop. Capped by height as well as width so
+                 a tall phone does not push the name off screen. sm and up:
+                 the cover treatment that fills the header, focal point kept low
+                 so the bottom of the frame stays in view. */
+              className="block max-sm:h-auto max-sm:max-h-[34svh] max-sm:w-auto max-sm:max-w-[min(68vw,26rem)] max-sm:object-contain max-sm:mx-auto max-sm:scale-100 h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
             />
           </picture>
         </Gsap.div>
@@ -223,20 +223,12 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
         style={enableParallax ? { y: contentY } : undefined}
         className="hero-split relative z-10 w-full max-w-[1200px] px-5 sm:px-6 md:px-12 flex flex-col items-center text-center mt-8"
       >
-        {/* Iris reveal + entrance wrapper */}
-        <Gsap.div
-          initial={false}
-          animate={isRevealed
-            ? { opacity: 1, y: 0, filter: 'blur(0px)', clipPath: 'circle(150% at 50% 100%)' }
-            : { opacity: 0, y: 14, filter: 'blur(3px)', clipPath: 'circle(0% at 50% 100%)' }
-          }
-          transition={{
-            clipPath: { duration: 1.25, ease: [0.2, 0.95, 0.3, 1] },
-            opacity: { duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] },
-            y: { duration: 1.0, delay: 0.08, ease: [0.22, 1, 0.36, 1] },
-            filter: { duration: 0.8, delay: 0.1 },
-          }}
-          className="w-full flex flex-col items-center hero-left"
+        {/* Entrance wrapper. The lift lives on this inner element rather than
+            .hero-split itself, because the outer wrapper's scroll parallax
+            already owns `transform` and the two would overwrite each other. */}
+        <div
+          className="hero-enter w-full flex flex-col items-center hero-left"
+          style={{ '--enter-delay': '0.3s' }}
         >
 
         {/* 2. Massive Clear Typography */}
@@ -248,27 +240,23 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           <OrbitingDecoration icon={Code2} delay={0.15} className="left-0 sm:left-2 lg:left-16 top-2 max-sm:hidden 2xl:hidden" isRevealed={isRevealed} enableAmbientMotion={enableAmbientMotion} />
           <OrbitingDecoration icon={Terminal} delay={0.45} className="left-6 sm:left-12 lg:left-28 bottom-8 hidden sm:flex 2xl:hidden" isRevealed={isRevealed} enableAmbientMotion={enableAmbientMotion} />
 
-          <Gsap.h1
-            initial={false}
-            animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-            transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          <h1
             /* Below sm the 4.25rem floor made "SAURABH" wider than a 320px
                viewport, so the word overflowed the screen. The phone size is
                viewport-relative and only applies under sm — from sm up the
                original clamp (and therefore the desktop lockup) is unchanged. */
-            className="text-[clamp(2.5rem,17vw,9rem)] sm:text-[clamp(4.25rem,14vw,9rem)] font-black uppercase tracking-tight text-black leading-[0.88]"
+            className="hero-enter text-[clamp(2.5rem,17vw,9rem)] sm:text-[clamp(4.25rem,14vw,9rem)] font-black uppercase tracking-tight text-black leading-[0.88]"
+            style={{ '--enter-delay': '0.38s' }}
           >
             SAURABH
-          </Gsap.h1>
+          </h1>
 
-          <Gsap.h1
-            initial={false}
-            animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-            transition={{ duration: 0.75, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(2.5rem,17vw,9rem)] sm:text-[clamp(4.25rem,14vw,9rem)] font-black uppercase tracking-tight text-transparent leading-[0.88] mt-2 sm:mt-0 font-outline-fallback"
+          <h1
+            className="hero-enter text-[clamp(2.5rem,17vw,9rem)] sm:text-[clamp(4.25rem,14vw,9rem)] font-black uppercase tracking-tight text-transparent leading-[0.88] mt-2 sm:mt-0 font-outline-fallback"
+            style={{ '--enter-delay': '0.5s' }}
           >
             KUMAR
-          </Gsap.h1>
+          </h1>
 
           {/* Right Decoration — hidden at 2xl+, where the portrait takes this column,
               and below sm, where the name fills the width */}
@@ -277,23 +265,19 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
         </div>
 
         {/* 3. Clean Slogan with Green Accent */}
-        <Gsap.div
-          initial={false}
-          animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.38, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center gap-2 mt-0 hero-left"
+        <div
+          className="hero-enter flex flex-col items-center gap-2 mt-0 hero-left"
+          style={{ '--enter-delay': '0.66s' }}
         >
           <h2 className="text-[clamp(1.35rem,4.2vw,2.25rem)] font-bold text-black/80 tracking-tight flex items-center justify-center flex-wrap gap-2 px-2 hero-left">
             Building <span className="bg-lime-400/30 px-2 rounded-md ring-1 ring-lime-500/20">Products</span> Teams &amp; Technology for Real-World Impact<span className="text-lime-500 font-extrabold -ml-1">.</span>
           </h2>
-        </Gsap.div>
+        </div>
 
         {/* 4. CTA Buttons */}
-        <Gsap.div
-          initial={false}
-          animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-          transition={{ delay: 0.5, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-wrap items-center justify-center gap-4 mt-5 hero-left"
+        <div
+          className="hero-enter flex flex-wrap items-center justify-center gap-4 mt-5 hero-left"
+          style={{ '--enter-delay': '0.8s' }}
         >
           <a
             href={asset('/Saurabh_Kumar_Resume.pdf')}
@@ -302,11 +286,8 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           >
             Download CV <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
           </a>
-        </Gsap.div>
-
-
-
-        </Gsap.div>
+        </div>
+      </div>
 
       </Gsap.div>
     </header>

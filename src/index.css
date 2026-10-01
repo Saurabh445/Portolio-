@@ -290,6 +290,96 @@ html.lenis body {
 }
 
 /* ============================================
+   Hero: page-load entrance
+   ============================================
+   There is no preloader overlay any more, so the landing page reveals itself:
+   every layer fades and settles in one slow, staggered sequence over roughly
+   1.8s.
+
+   These are CSS keyframes rather than the GSAP wrapper on purpose. The wrapper
+   applies its `initial` state in an effect, which lands a frame after first
+   paint and flashes the content before hiding it again. CSS runs from the very
+   first painted frame, and the global `prefers-reduced-motion` block already
+   collapses these to 0.01ms. */
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* The portrait settles from a slightly tighter frame, like a lens easing back
+   into place. Its own parallax transform is written to a different element
+   (the inner wrapper), so the two never fight over `transform`. */
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-chip {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* The base class carries the rise itself, so an element only needs
+   `hero-enter` plus a --enter-delay to take part in the sequence. The
+   modifier classes below swap it for a different treatment. */
+.hero-enter {
+  animation-name: hero-rise;
+  animation-duration: 1.1s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  animation-delay: var(--enter-delay, 0s);
+  will-change: transform, opacity;
+}
+
+.hero-enter-fade {
+  animation-name: hero-fade;
+  animation-duration: 1.4s;
+}
+
+.hero-enter-settle {
+  animation-name: hero-settle;
+  animation-duration: 1.8s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-enter-chip {
+  animation-name: hero-chip;
+  animation-duration: 0.9s;
+}
+
+/* ============================================
    Hero: left-aligned text over the full-bleed portrait
    ============================================ */
 /* Below 1536px the text stays centred. At 2xl+ it moves to the left edge so it

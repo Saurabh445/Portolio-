@@ -145,10 +145,13 @@ const AboutSection = memo(function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            /* The photo is pulled up slightly so its top edge (minus the offset
-               border, which sits 10px above it) lines up with the cap height of
-               "Founder & CEO" instead of starting below it. */
-            className="lg:sticky lg:top-28 lg:-mt-6"
+            /* No sticky/offset here on purpose. The grid is `items-start`, so both
+               columns already share a top edge and the photo's frame lines up with
+               "Founder & CEO" for free. `lg:sticky lg:top-28` was what pushed the
+               photo 112px down: the photo column (550px) is taller than the copy
+               column (454px), so sticky had zero travel room and never engaged —
+               it only clamped the frame 112px below the navbar. Dropping it (and
+               the negative margin that had no effect) restores the flush alignment. */
           >
             {/* Profile image with decorative offset border */}
             <div className="relative">

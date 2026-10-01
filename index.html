@@ -29,14 +29,15 @@
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Grotesk:wght@300..700&display=swap">
   </noscript>
-  <!-- The hero is a <picture>: phones get center-top-image-only-smartphone.png
-       and everything wider gets portrait.png. The preload must mirror that
-       split, otherwise every phone downloads the desktop image before the
-       <source> is parsed and then throws it away (~1.8MB wasted). -->
+  <!-- The hero is a <picture>: phones and tablets (below lg) get
+       center-top-image-only-smartphone.png and laptop width up gets portrait.png.
+       The preload must mirror that split, otherwise every small screen downloads
+       the desktop image before the <source> is parsed and then throws it away
+       (~1.7MB wasted). -->
   <link rel="preload" as="image" type="image/png" href="/center-top-image-only-smartphone.png"
-        media="(max-width: 639px)" fetchpriority="high">
+        media="(max-width: 1023px)" fetchpriority="high">
   <link rel="preload" as="image" type="image/png" href="/portrait.png"
-        media="(min-width: 640px)" fetchpriority="high">
+        media="(min-width: 1024px)" fetchpriority="high">
 
   <title>SAURABH KUMAR</title>
   <meta name="title" content="SAURABH KUMAR">

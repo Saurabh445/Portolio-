@@ -167,48 +167,55 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           exposes an edge, and the bottom fade carries it into the next section
           the way the background layer already does.
 
-          Below sm the landscape frame is cropped so hard on a narrow phone that the
-          subject is lost, so a phone-specific transparent cutout (509x491) is
-          swapped in and shown whole above the name instead of as a backdrop. */}
+          Below lg the landscape frame is cropped so hard on a phone or tablet
+          that the subject is lost, and it also sits directly behind the centred
+          name, which muddies the type. So a transparent cutout (2400x1423) is
+          swapped in and shown whole, in flow above the name, instead of as a
+          backdrop. Laptop width and up keeps the full-bleed cover treatment. */}
       <Gsap.div
-        className="pointer-events-none max-sm:relative max-sm:inset-auto max-sm:z-0 max-sm:w-full max-sm:flex-none hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
+        className="pointer-events-none max-lg:relative max-lg:inset-auto max-lg:z-[5] max-lg:w-full max-lg:flex-none max-lg:overflow-visible hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
           style={{ '--enter-delay': '0.12s' }}
       >
         <Gsap.div
           style={enableParallax ? { y: portraitY } : undefined}
-          className="max-sm:relative max-sm:w-full absolute inset-0"
+          className="max-lg:relative max-lg:w-full absolute inset-0"
         >
-          <picture className="block max-sm:w-full sm:h-full sm:w-full">
-            {/* Phones only: swaps in the near-square phone frame. The parent
+          <picture className="block max-lg:w-full lg:h-full lg:w-full">
+            {/* Phones and tablets: swaps in the transparent cutout. The parent
                 clip and the scale stay put, so nothing else about the layer
                 changes between the two sources. */}
             <source
-              media="(max-width: 639px)"
+              media="(max-width: 1023px)"
               srcSet={asset('/center-top-image-only-smartphone.png')}
-              width="509"
-              height="491"
+              width="2400"
+              height="1423"
             />
             <img
               src={asset('/portrait.png')}
               alt="Saurabh Kumar"
-              /* Intrinsic size of the fallback source. The phone <source> below
-                 is 509x491 and is media-preloaded, so the correct aspect ratio
-                 is already in cache when the img paints. */
+              /* Intrinsic size of the fallback source. The <source> below is
+                 2400x1423 and is media-preloaded, so the correct aspect ratio is
+                 already in cache when the img paints. */
               width={1671}
               height={941}
               loading="eager"
               decoding="async"
               draggable={false}
-              /* Phone: the frame is now a pre-cut 509x491 RGBA figure, so it is shown
-                 whole — no cover, no crop. Capped by height as well as width so
-                 a tall phone does not push the name off screen. sm and up:
-                 the cover treatment that fills the header, focal point kept low
-                 so the bottom of the frame stays in view. */
-              className="block max-sm:h-auto max-sm:max-h-[34svh] max-sm:w-auto max-sm:max-w-[min(68vw,26rem)] max-sm:object-contain max-sm:mx-auto max-sm:scale-100 h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
+              /* Phone and tablet: a transparent RGBA cutout shown whole (no
+                 cover), anchored bottom-centre and scaled up so the figure reads
+                 closer. Bottom origin keeps the figure's base on a fixed line, so
+                 the upward growth happens into the empty space above the name
+                 rather than pushing it down. The layer drops its clip at these
+                 widths for the same reason — a bottom-anchored scaled box would
+                 otherwise have its head sliced off. Caps keep a tall phone from
+                 overflowing.
+                 lg and up: the cover treatment that fills the header, focal point
+                 kept low so the bottom of the frame stays in view. */
+              className="block max-lg:h-auto max-lg:max-h-[42svh] max-lg:w-auto max-lg:max-w-[min(70vw,30rem)] max-lg:object-contain max-lg:mx-auto max-lg:origin-bottom max-lg:scale-[1.28] h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
             />
           </picture>
         </Gsap.div>
-        <div className="absolute inset-x-0 bottom-0 h-40 max-sm:hidden bg-gradient-to-t from-[#FAF9F6] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 max-lg:hidden bg-gradient-to-t from-[#FAF9F6] to-transparent" />
       </Gsap.div>
 
       {/* ── MAIN CONTENT ──

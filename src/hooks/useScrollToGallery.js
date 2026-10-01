@@ -34,10 +34,13 @@ const useScrollToGallery = (galleryRef) => {
     const findTrack = () => {
       const section = galleryRef.current;
       if (!section) return null;
-      return section.querySelector('.flex.gap-6, .flex.gap-6.md\\:gap-12, .flex.gap-12, .flex.gap-6.md\\:gap-12.items-start, .flex.gap-12.items-start');
+      return section.querySelector('.flex.gap-6, .flex.gap-12');
     };
 
-    const waitForTrack = (maxMs = 6000) => new Promise((resolve) => {
+    /* The gallery is code-split, so its horizontal track is not in the DOM on
+       the first frame. Waiting for the track itself (rather than a fixed delay)
+       keeps the offset measurement honest. */
+    const waitForTrack = (maxMs = 8000) => new Promise((resolve) => {
       const started = performance.now();
       const existing = findTrack();
       if (existing) { resolve(existing); return; }
@@ -68,11 +71,6 @@ const useScrollToGallery = (galleryRef) => {
       const track = await waitForTrack();
       if (cancelled || !track) return;
 
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight || window.innerHeight;
-      const offset = Math.min(sectionHeight * 0.3, 300);
-      const targetScrollPosition = sectionTop + offset;
-
       const [gsapModule, { ScrollTrigger }] = await Promise.all([
         import('gsap'),
         import('gsap/ScrollTrigger'),
@@ -83,12 +81,28 @@ const useScrollToGallery = (galleryRef) => {
       gsap.set(track, { x: 0 });
       ScrollTrigger.refresh();
 
-      requestAnimationFrame(() => {
+      /* Every section below the hero is lazy, so the document keeps growing
+         after the gallery mounts. A single scroll would be clamped by whatever
+         height existed at that moment, so re-measure and retry until the
+         browser actually lands on the target. */
+      const attempts = 8;
+      for (let attempt = 0; attempt < attempts; attempt++) {
         if (cancelled) return;
-        smoothScrollTo(targetScrollPosition, () => {
-          ScrollTrigger.refresh();
-        });
-      });
+
+        const target = section.offsetTop + Math.min((section.offsetHeight || window.innerHeight) * 0.3, 300);
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        const reachable = Math.min(target, maxScroll);
+
+        smoothScrollTo(reachable);
+
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        if (cancelled) return;
+
+        if (Math.abs(window.scrollY - reachable) <= 4) break;
+      }
+
+      if (cancelled) return;
+      ScrollTrigger.refresh();
     };
 
     const timer = setTimeout(() => { scrollToGallery(); }, 150);

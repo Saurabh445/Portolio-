@@ -261,9 +261,6 @@ const AboutSection = memo(function AboutSection() {
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-[5px] h-[5px] rounded-full bg-lime-500 shrink-0" />
                   <div className="flex-1 h-px bg-gradient-to-r from-black/[0.1] to-transparent" />
-                  <span className="font-mono text-[9px] font-bold border border-black/[0.1] bg-white px-2.5 py-1 rounded-[2px] text-black/35 tabular-nums">
-                    {achievements.length} Award{achievements.length !== 1 ? 's' : ''}
-                  </span>
                 </div>
 
                 <div className="flex flex-col gap-3">

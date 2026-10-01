@@ -211,7 +211,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
                  overflowing.
                  lg and up: the cover treatment that fills the header, focal point
                  kept low so the bottom of the frame stays in view. */
-              className="block max-lg:h-auto max-lg:max-h-[42svh] max-lg:w-auto max-lg:max-w-[min(70vw,30rem)] max-lg:object-contain max-lg:mx-auto max-lg:origin-bottom max-lg:scale-[1.7] h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
+              className="block max-lg:h-auto max-lg:max-h-[42svh] max-lg:w-auto max-lg:max-w-[min(70vw,30rem)] max-lg:object-contain max-lg:mx-auto max-lg:origin-bottom max-lg:scale-[1.7] md:max-lg:scale-[2] h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
             />
           </picture>
         </Gsap.div>

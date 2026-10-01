@@ -173,7 +173,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           swapped in and shown whole, in flow above the name, instead of as a
           backdrop. Laptop width and up keeps the full-bleed cover treatment. */}
       <Gsap.div
-        className="pointer-events-none max-lg:relative max-lg:inset-auto max-lg:z-[5] max-lg:w-full max-lg:flex-none max-lg:overflow-visible hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
+        className="pointer-events-none max-lg:relative max-lg:inset-auto max-lg:z-[5] max-lg:w-full max-lg:flex-none max-lg:overflow-visible max-lg:mt-10 hero-enter hero-enter-settle absolute inset-0 z-[1] overflow-hidden"
           style={{ '--enter-delay': '0.12s' }}
       >
         <Gsap.div
@@ -211,7 +211,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
                  overflowing.
                  lg and up: the cover treatment that fills the header, focal point
                  kept low so the bottom of the frame stays in view. */
-              className="block max-lg:h-auto max-lg:max-h-[42svh] max-lg:w-auto max-lg:max-w-[min(70vw,30rem)] max-lg:object-contain max-lg:mx-auto max-lg:origin-bottom max-lg:scale-[1.28] h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
+              className="block max-lg:h-auto max-lg:max-h-[42svh] max-lg:w-auto max-lg:max-w-[min(70vw,30rem)] max-lg:object-contain max-lg:mx-auto max-lg:origin-bottom max-lg:scale-[1.7] h-full w-full object-cover object-[center_78%] scale-[1.08] select-none"
             />
           </picture>
         </Gsap.div>

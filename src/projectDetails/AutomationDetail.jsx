@@ -1,9 +1,10 @@
 import LeadershipDetail from "./LeadershipDetail";
+import { asset } from "../utils/assets";
 
 export const project = {
   title: "Automation",
   category: "Automation",
-  heroImg: "/photo-3.webp",
+  heroImg: asset("/photo-3.webp"),
   tagline:
     "One of the six areas I build through Beckkon Systems, my first venture.",
   year: "2026",

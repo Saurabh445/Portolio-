@@ -3,12 +3,13 @@ import { Gsap, GsapPresence } from '../utils/gsapAnimate';
 import { createPortal } from 'react-dom';
 import { X, Trophy, ChevronLeft, ChevronRight } from 'lucide-react';
 import BeckkonStory from './beckkon/BeckkonStory';
+import { asset } from '../utils/assets';
 
 /* ─── Image data (compressed WebP) ───────── */
 const galleryImages = [
-    { src: '/photo-1.webp', alt: 'Beckkon Systems - Saurabh Kumar' },
-    { src: '/photo-2.webp', alt: 'Beckkon Systems - Product and Technology' },
-    { src: '/photo-3.webp', alt: 'Beckkon Systems - Team and Execution' },
+    { src: asset('/photo-1.webp'), alt: 'Beckkon Systems - Saurabh Kumar' },
+    { src: asset('/photo-2.webp'), alt: 'Beckkon Systems - Product and Technology' },
+    { src: asset('/photo-3.webp'), alt: 'Beckkon Systems - Team and Execution' },
 ];
 
 /* ─── Image Carousel ────────────────────────────────────── */

@@ -1,6 +1,7 @@
 import { memo, useRef, useState, useEffect } from 'react';
 import { Gsap, useGsapReducedMotion, useGsapScroll, useGsapTransform } from '../utils/gsapAnimate';
 import { Terminal, Code2, Database, Cpu, Download } from 'lucide-react';
+import { asset } from '../utils/assets';
 
 // === DECORATIVE ORBITING ELEMENTS (Left & Right) ===
 const OrbitingDecoration = ({ icon: Icon, delay, className, isRevealed, enableAmbientMotion }) => (
@@ -176,7 +177,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
       >
         <Gsap.div style={enableParallax ? { y: portraitY } : undefined}>
           <img
-            src="/portrait.png"
+            src={asset('/portrait.png')}
             alt="Saurabh Kumar"
             width={1276}
             height={1233}
@@ -269,7 +270,7 @@ const HeroSection = memo(function HeroSection({ isRevealed = true }) {
           className="flex flex-wrap items-center justify-center gap-4 mt-5 hero-left"
         >
           <a
-            href="/Saurabh_Kumar_Resume.pdf"
+            href={asset('/Saurabh_Kumar_Resume.pdf')}
             download
             className="group flex items-center gap-2 bg-black text-white px-7 py-3.5 font-mono text-sm font-bold uppercase tracking-wider hover:bg-lime-400 hover:text-black transition-all duration-300"
           >

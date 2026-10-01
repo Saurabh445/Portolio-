@@ -1,9 +1,10 @@
 import SoftwarePlanningDetail from "./SoftwarePlanningDetail";
+import { asset } from "../utils/assets";
 
 export const project = {
   title: "Digital Infrastructure",
   category: "Digital Infrastructure",
-  heroImg: "/photo-1.webp",
+  heroImg: asset("/photo-1.webp"),
   tagline:
     "One of the six areas I build through Beckkon Systems, my first venture.",
   year: "2026",

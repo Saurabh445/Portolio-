@@ -31,6 +31,7 @@ root.render(
     null,
     React.createElement(
       BrowserRouter,
+      { basename: import.meta.env.BASE_URL },
       null,
       React.createElement(App)
     )

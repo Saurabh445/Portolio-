@@ -1,6 +1,7 @@
 import { memo, useState, lazy, Suspense } from 'react';
 import { Gsap } from '../utils/gsapAnimate';
 import { Trophy, ArrowUpRight } from 'lucide-react';
+import { asset } from '../utils/assets';
 
 const HackathonDetailModal = lazy(() => import('./HackathonDetailModal'));
 
@@ -169,9 +170,9 @@ const AboutSection = memo(function AboutSection() {
                 <div className="absolute inset-0 bg-black/[0.12] group-hover:bg-transparent transition-colors duration-700 z-10 mix-blend-multiply pointer-events-none" />
 
                 <picture>
-                  <source srcSet="/profilee.webp" type="image/webp" />
+                  <source srcSet={asset('/profilee.webp')} type="image/webp" />
                   <img
-                    src="/profilee.webp"
+                    src={asset('/profilee.webp')}
                     alt="Saurabh Kumar"
                     loading="lazy"
                     decoding="async"

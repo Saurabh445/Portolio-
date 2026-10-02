@@ -31,14 +31,14 @@ export const TYPE = {
   outline: "break-words text-[clamp(1.4rem,5.2vw,4.5rem)] font-bold uppercase leading-[0.96] tracking-[-0.04em] cs-outline",
   title: "text-[clamp(1.5rem,3.1vw,2.6rem)] font-bold uppercase leading-[1.06] tracking-[-0.02em]",
   displayXL: "text-[clamp(1.75rem,6vw,4.75rem)] font-bold uppercase leading-[0.94] tracking-[-0.04em]",
-  lead: "text-[1.0625rem] leading-[1.6] md:text-[1.1875rem] md:leading-[1.62]",
-  body: "text-[1.0625rem] leading-[1.7] md:text-[1.125rem] md:leading-[1.78]",
-  eyebrow: "font-mono text-[0.6875rem] font-bold uppercase leading-[1.5] tracking-[0.2em]",
-  micro: "font-mono text-[0.6875rem] font-bold uppercase leading-[1.5] tracking-[0.12em]",
-  meta: "font-mono text-[0.6875rem] font-bold uppercase leading-[1.5] tracking-[0.16em]",
-  node: "font-mono text-[0.75rem] font-bold uppercase leading-[1.45] tracking-[0.08em] md:text-[0.8125rem]",
+  lead: "text-[1.125rem] leading-[1.6] md:text-[1.25rem] md:leading-[1.62]",
+  body: "text-[1.125rem] leading-[1.7] md:text-[1.1875rem] md:leading-[1.78]",
+  eyebrow: "font-mono text-[0.8125rem] font-bold uppercase leading-[1.5] tracking-[0.2em]",
+  micro: "font-mono text-[0.8125rem] font-bold uppercase leading-[1.5] tracking-[0.12em]",
+  meta: "font-mono text-[0.8125rem] font-bold uppercase leading-[1.5] tracking-[0.16em]",
+  node: "font-mono text-[0.875rem] font-bold uppercase leading-[1.45] tracking-[0.08em] md:text-[0.875rem]",
   monoLead:
-    "font-mono text-[0.8125rem] font-bold uppercase leading-[1.6] tracking-[0.1em] md:text-[0.875rem] md:leading-[1.65]",
+    "font-mono text-[0.875rem] font-bold uppercase leading-[1.6] tracking-[0.1em] md:text-[0.9375rem] md:leading-[1.65]",
 };
 
 export const TEXT = {
@@ -133,17 +133,17 @@ export const TopBar = ({ section, project = "Beckkon Systems", closeLabel, onClo
   <div className="sticky top-0 z-40 border-b border-black/[0.07] bg-[#FAF9F6]/90 backdrop-blur-md">
     <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-5 py-3 sm:px-7 md:px-10 md:py-4">
       <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-        <span className="flex min-w-0 items-center gap-2 truncate font-mono text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-black/70 sm:text-[0.75rem]">
+        <span className="flex min-w-0 items-center gap-2 truncate font-mono text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-black/70 sm:text-[0.875rem]">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-lime-500" />
           {section}
         </span>
-        <span className="hidden shrink-0 border-l border-black/15 pl-3 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-black/40 sm:block sm:text-[0.75rem]">
+        <span className="hidden shrink-0 border-l border-black/15 pl-3 font-mono text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-black/50 sm:block sm:text-[0.875rem]">
           {project}
         </span>
       </div>
       <button
         onClick={onClose}
-        className="flex min-h-[2.5rem] shrink-0 items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-wide shadow-sm transition-all duration-300 hover:bg-black hover:text-white hover:shadow-md sm:px-5 sm:text-sm"
+        className="flex min-h-[2.5rem] shrink-0 items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-[13px] font-bold uppercase tracking-wide shadow-sm transition-all duration-300 hover:bg-black hover:text-white hover:shadow-md sm:px-5 sm:text-sm"
       >
         <ArrowUpRight className="rotate-[225deg]" size={16} />
         {closeLabel}
@@ -294,7 +294,7 @@ export const CaseStudySection = ({ id, number, note, title, dark = false, childr
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span
             className={cx(
-              "font-mono text-[0.8125rem] font-bold tabular-nums tracking-[0.08em] md:text-[0.875rem]",
+              "font-mono text-[0.875rem] font-bold tabular-nums tracking-[0.08em] md:text-[0.9375rem]",
               TEXT.accent(dark),
             )}
           >
@@ -392,7 +392,7 @@ export const CaseStudyIndex = ({ title, items, idPrefix, scrollAttr }) => {
               >
                 <span
                   className={cx(
-                    "font-mono text-[0.6875rem] font-bold tabular-nums tracking-[0.08em]",
+                    "font-mono text-[0.8125rem] font-bold tabular-nums tracking-[0.08em]",
                     isActive ? "text-lime-600" : "text-black/35 group-hover:text-lime-600",
                   )}
                 >
@@ -400,7 +400,7 @@ export const CaseStudyIndex = ({ title, items, idPrefix, scrollAttr }) => {
                 </span>
                 <span
                   className={cx(
-                    "text-[0.8125rem] font-semibold uppercase leading-tight tracking-[0.05em]",
+                    "text-[0.875rem] font-semibold uppercase leading-tight tracking-[0.05em]",
                     isActive ? "text-black" : "text-black/55 group-hover:text-black",
                   )}
                 >
@@ -450,7 +450,7 @@ export const BandHeading = ({ kicker, children }) => (
 
 export const BandFooter = ({ left, right = "Beckkon Systems" }) => (
   <Reveal delay={0.22} className="mt-12 border-t border-white/15 pt-5 md:mt-16">
-    <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.16em] text-white/40 md:text-[0.75rem]">
+    <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 font-mono text-[0.8125rem] font-bold uppercase tracking-[0.16em] text-white/50 md:text-[0.875rem]">
       <span>{left}</span>
       <span>{right}</span>
     </div>

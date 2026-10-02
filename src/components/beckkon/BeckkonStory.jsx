@@ -29,7 +29,7 @@ const IslandDiagram = () => (
                     <Fragment key={island.label}>
                         <div className="flex-1 min-w-0 border border-dashed border-white/25 px-2 py-5 md:py-8 flex flex-col items-center gap-2.5 text-center">
                             <Icon size={17} className="text-white/40" />
-                            <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.12em] text-white/70 leading-tight">
+                            <span className="font-mono text-[12px] md:text-[13.5px] uppercase tracking-[0.12em] text-white/70 leading-tight">
                                 {island.label}
                             </span>
                         </div>
@@ -46,7 +46,7 @@ const ConsequenceCard = ({ item, index }) => {
     return (
         <Reveal delay={0.05 * index} className="bg-[#0A0A0A] p-5 md:p-6">
             <Icon size={16} className="text-lime-400 mb-3.5" strokeWidth={2} />
-            <p className="text-[12.5px] md:text-[13.5px] leading-[1.5] text-white/80">{item.label}</p>
+            <p className="text-[14.5px] md:text-[16px] leading-[1.55] text-white/85">{item.label}</p>
         </Reveal>
     );
 };
@@ -68,12 +68,12 @@ const BuildCard = ({ item, index }) => {
             <span aria-hidden="true" className="absolute left-0 top-0 h-px w-0 bg-lime-500 group-hover:w-full transition-[width] duration-500 ease-out" />
             <div className="flex items-center justify-between">
                 <Icon size={18} className="text-black/35 group-hover:text-black/70 transition-colors duration-300" strokeWidth={1.75} />
-                <span className="font-mono text-[10px] font-bold text-black/20 tabular-nums">{item.code}</span>
+                <span className="font-mono text-[13px] font-bold text-black/55 tabular-nums">{item.code}</span>
             </div>
-            <h3 className="mt-5 font-black uppercase tracking-tight text-[14.5px] md:text-[17px] leading-[1.18] text-black">
+            <h3 className="mt-5 font-black uppercase tracking-tight text-[16px] md:text-[17px] leading-[1.18] text-black">
                 {item.title}
             </h3>
-            <p className="mt-2.5 text-[12.5px] md:text-[13px] leading-[1.65] text-black/55 font-light">
+            <p className="mt-2.5 text-[15px] md:text-[16px] leading-[1.65] text-black/60 font-light">
                 {item.desc}
             </p>
         </Gsap.div>
@@ -90,7 +90,7 @@ const ChainNode = ({ label, index, total }) => {
 
     return (
         <Reveal delay={0.045 * index} className="relative flex items-center justify-center">
-            <span className={`w-full text-center border px-2.5 py-3.5 md:py-4 font-mono text-[9px] md:text-[10.5px] uppercase tracking-[0.1em] leading-[1.35] ${last ? 'border-lime-400/50 bg-lime-400/10 text-lime-300' : 'border-white/15 bg-white/[0.03] text-white/75'}`}>
+            <span className={`w-full text-center border px-2.5 py-3.5 md:py-4 font-mono text-[12px] md:text-[13px] uppercase tracking-[0.1em] leading-[1.35] ${last ? 'border-lime-400/50 bg-lime-400/10 text-lime-300' : 'border-white/15 bg-white/[0.03] text-white/75'}`}>
                 {label}
             </span>
 
@@ -139,20 +139,20 @@ const MemberCard = ({ member, index }) => {
         >
             {advisor && <span aria-hidden="true" className="absolute left-0 right-0 top-0 h-[3px] bg-lime-500" />}
 
-            <span className={`w-11 h-11 rounded-full flex items-center justify-center font-mono text-[11px] font-bold tracking-[0.04em] ${founder ? 'bg-lime-400 text-black' : 'bg-black text-white'}`}>
+            <span className={`w-11 h-11 rounded-full flex items-center justify-center font-mono text-[13px] font-bold tracking-[0.04em] ${founder ? 'bg-lime-400 text-black' : 'bg-black text-white'}`}>
                 {member.initials}
             </span>
 
-            <h3 className={`mt-5 font-black uppercase tracking-tight text-[15px] md:text-[17px] leading-[1.14] ${founder ? 'text-white' : 'text-black'}`}>
+            <h3 className={`mt-5 font-black uppercase tracking-tight text-[16px] md:text-[17px] leading-[1.14] ${founder ? 'text-white' : 'text-black'}`}>
                 {member.name}
             </h3>
-            <p className={`mt-2 font-mono text-[9.5px] md:text-[10px] uppercase tracking-[0.14em] leading-[1.5] ${founder ? 'text-lime-400' : 'text-black/45'}`}>
+            <p className={`mt-2 font-mono text-[12.5px] uppercase tracking-[0.14em] leading-[1.5] ${founder ? 'text-lime-400' : 'text-black/55'}`}>
                 {member.role}
             </p>
 
             <div className="mt-auto pt-5">
                 {member.affiliation.map((line) => (
-                    <p key={line} className={`text-[11.5px] md:text-[12px] leading-[1.5] ${founder ? 'text-white/55' : 'text-black/50'}`}>
+                    <p key={line} className={`text-[14.5px] md:text-[15px] leading-[1.55] ${founder ? 'text-white/60' : 'text-black/55'}`}>
                         {line}
                     </p>
                 ))}
@@ -181,7 +181,7 @@ const Metric = ({ metric, index, total }) => {
             <span className={`block font-black tracking-tighter leading-[0.95] break-words hyphens-none ${METRIC_SIZE[metric.scale]}`}>
                 {metric.value}
             </span>
-            <span className="mt-2.5 block font-mono text-[9px] md:text-[9.5px] uppercase tracking-[0.16em] text-black/45 leading-[1.4]">
+            <span className="mt-2.5 block font-mono text-[12px] md:text-[13.5px] uppercase tracking-[0.16em] text-black/55 leading-[1.4]">
                 {metric.label}
             </span>
         </Reveal>
@@ -203,7 +203,7 @@ const LinkRow = ({ link, index }) => (
                 <span className="block font-black uppercase tracking-tight text-[16px] md:text-[22px] text-white group-hover:text-lime-300 transition-colors duration-300">
                     {link.label}
                 </span>
-                <span className="mt-1.5 block font-mono text-[10.5px] md:text-[12px] text-white/45 group-hover:text-white/70 transition-colors duration-300 break-all">
+                <span className="mt-1.5 block font-mono text-[13px] md:text-[14px] text-white/55 group-hover:text-white/70 transition-colors duration-300 break-all">
                     {link.url}
                 </span>
             </span>
@@ -236,8 +236,8 @@ export default function BeckkonStory() {
                         <dl className="border-t border-black/[0.12]">
                             {BEGINNING.facts.map((fact) => (
                                 <div key={fact.label} className="flex items-baseline justify-between gap-6 border-b border-black/[0.07] py-3">
-                                    <dt className="font-mono text-[9.5px] uppercase tracking-[0.2em] text-black/35 shrink-0">{fact.label}</dt>
-                                    <dd className="text-[12.5px] md:text-[13.5px] text-black/75 text-right">{fact.value}</dd>
+                                    <dt className="font-mono text-[13px] uppercase tracking-[0.16em] text-black/55 shrink-0">{fact.label}</dt>
+                                    <dd className="text-[15px] md:text-[16px] text-black/75 text-right">{fact.value}</dd>
                                 </div>
                             ))}
                         </dl>
@@ -271,7 +271,7 @@ export default function BeckkonStory() {
                     </div>
 
                     <Reveal delay={0.05} className="mt-10 md:mt-14 border-l-2 border-lime-400 pl-5 md:pl-6">
-                        <p className="text-[15px] md:text-[17px] font-light leading-[1.75] text-white/85 max-w-[68ch]">
+                        <p className="text-[16px] md:text-[17px] font-light leading-[1.75] text-white/85 max-w-[68ch]">
                             {PROBLEM.close}
                         </p>
                     </Reveal>
@@ -288,7 +288,7 @@ export default function BeckkonStory() {
                         return (
                             <Reveal key={pillar.label} delay={0.04 * (i % 6)} className="bg-[#FAF9F6] px-3 py-5 md:py-6 flex flex-col items-center text-center gap-3">
                                 <Icon size={17} className="text-black/40" strokeWidth={1.75} />
-                                <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.12em] text-black/60 leading-[1.4]">
+                                <span className="font-mono text-[12px] md:text-[13.5px] uppercase tracking-[0.12em] text-black/60 leading-[1.4]">
                                     {pillar.label}
                                 </span>
                             </Reveal>
@@ -322,7 +322,7 @@ export default function BeckkonStory() {
                             </p>
                         </Reveal>
                         <Reveal delay={0.08}>
-                            <p className="text-[14px] md:text-[15px] font-light leading-[1.75] text-white/60 max-w-[52ch]">
+                            <p className="text-[16px] md:text-[16px] font-light leading-[1.75] text-white/60 max-w-[52ch]">
                                 {INNOVATION.note}
                             </p>
                         </Reveal>
@@ -365,7 +365,7 @@ export default function BeckkonStory() {
                 </div>
 
                 <Reveal className="mt-8 md:mt-10 border-l-2 border-lime-500 pl-5 md:pl-6">
-                    <p className="text-[15px] md:text-[16px] font-light leading-[1.75] text-black/65 max-w-[70ch]">
+                    <p className="text-[16px] md:text-[16px] font-light leading-[1.75] text-black/65 max-w-[70ch]">
                         {TRACTION.note}
                     </p>
                 </Reveal>
@@ -375,7 +375,7 @@ export default function BeckkonStory() {
             <Band>
                 <Chapter index="08" title="Explore Beckkon" tone="dark">
                     <Reveal className="mt-6">
-                        <p className="text-white/55 text-[15px] md:text-[16px] font-light">{EXPLORE.lead}</p>
+                        <p className="text-white/55 text-[16px] md:text-[16px] font-light">{EXPLORE.lead}</p>
                     </Reveal>
 
                     <div className="mt-7 md:mt-9 flex flex-col gap-3">

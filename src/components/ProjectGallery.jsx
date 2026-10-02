@@ -301,14 +301,14 @@ export default function ProjectGallery({ onOpenProject }) {
           <h2 className="text-[9vw] sm:text-5xl font-black text-white uppercase leading-[0.92] tracking-tight">
             <span className="text-lime-400">Explorations</span>
           </h2>
-          <p className="mt-4 text-neutral-400 text-sm leading-6 max-w-sm">
+          <p className="mt-4 text-neutral-400 text-[15px] md:text-base leading-7 max-w-sm">
             Turning real-world problems into practical ideas, systems and ventures.
           </p>
         </div>
 
         {/* Project Counter */}
         <div className="px-6 mb-6 flex items-center justify-between">
-          <span className="font-mono text-xs text-white/30 uppercase tracking-[0.16em]">
+          <span className="font-mono text-[13px] text-white/50 uppercase tracking-[0.16em]">
             {String(activeProjectIndex + 1).padStart(2, '0')} / {String(projectCount).padStart(2, '0')}
           </span>
           <div className="flex gap-1.5">
@@ -374,7 +374,7 @@ export default function ProjectGallery({ onOpenProject }) {
               <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-lime-400 shadow-[0_0_6px_rgba(163,230,53,0.8)]" />
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-white/70">
+                  <span className="text-[11.5px] font-mono font-bold uppercase tracking-[0.16em] text-white/70">
                     {project.category}
                   </span>
                 </div>
@@ -383,14 +383,14 @@ export default function ProjectGallery({ onOpenProject }) {
                 </h3>
 
                 {project.description && (
-                  <p className="mt-2.5 text-[11px] font-mono leading-5 text-white/55 max-w-[34ch]">
+                  <p className="mt-2.5 text-[13px] font-mono leading-[1.45] text-white/60 max-w-[34ch]">
                     {project.description}
                   </p>
                 )}
 
                 {/* CTA */}
                 <div className="mt-3 flex items-center gap-2 text-lime-400">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] font-bold">VIEW</span>
+                  <span className="font-mono text-[11.5px] uppercase tracking-[0.14em] font-bold">VIEW</span>
                 </div>
               </div>
             </Gsap.div>
@@ -491,7 +491,7 @@ export default function ProjectGallery({ onOpenProject }) {
                     <h3 className="text-4xl lg:text-5xl font-black uppercase text-white tracking-tight leading-[1.1]">{project.title}</h3>
 
                     {project.description && (
-                      <p className="mt-4 text-sm md:text-base text-white/60 max-w-[46ch] leading-relaxed">
+                      <p className="mt-4 text-[15px] md:text-base text-white/60 max-w-[46ch] leading-relaxed">
                         {project.description}
                       </p>
                     )}

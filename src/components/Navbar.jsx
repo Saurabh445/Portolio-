@@ -1,7 +1,6 @@
 import { useState, memo, useEffect, useRef } from 'react';
 import { Gsap, GsapPresence } from '../utils/gsapAnimate';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import Magnetic from './Magnetic';
 import { exponentialEaseOut } from '../utils/easing';
 
 const NAV_ITEMS = [
@@ -104,26 +103,24 @@ const Navbar = memo(function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 w-full px-4 pt-safe-4 pb-4 md:p-6 flex justify-between items-center z-50 pointer-events-none transition-all duration-500`}>
       {/* ── Logo ── */}
-      <Magnetic>
-        <div
-          onClick={() => {
-            if (window.lenisInstance && typeof window.lenisInstance.scrollTo === 'function') {
-              window.lenisInstance.scrollTo(0, {
-                duration: 1.5,
-                easing: exponentialEaseOut
-              });
-              return;
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className={`group pointer-events-auto flex items-center gap-3 px-5 py-2.5 rounded-full backdrop-blur-md border transition-all duration-500 cursor-pointer ${isOnDarkSection ? 'bg-black/25 border-white/25 shadow-[0_8px_24px_rgba(0,0,0,0.22)]' : scrolled ? 'bg-white/80 border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]' : 'bg-transparent border-transparent'}`}
-        >
+      <div
+        onClick={() => {
+          if (window.lenisInstance && typeof window.lenisInstance.scrollTo === 'function') {
+            window.lenisInstance.scrollTo(0, {
+              duration: 1.5,
+              easing: exponentialEaseOut
+            });
+            return;
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className={`group pointer-events-auto flex items-center gap-3 px-5 py-2.5 rounded-full backdrop-blur-md border transition-all duration-500 cursor-pointer ${isOnDarkSection ? 'bg-black/25 border-white/25 shadow-[0_8px_24px_rgba(0,0,0,0.22)]' : scrolled ? 'bg-white/80 border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)]' : 'bg-transparent border-transparent'}`}
+      >
 
-          <span className={`text-sm font-black tracking-[0.16em] md:tracking-[0.2em] uppercase transition-colors duration-300 ${isOnDarkSection ? 'text-white' : 'text-black'}`}>
-            Home
-          </span>
-        </div>
-      </Magnetic>
+        <span className={`text-sm font-black tracking-[0.16em] md:tracking-[0.2em] uppercase transition-colors duration-300 ${isOnDarkSection ? 'text-white' : 'text-black'}`}>
+          Home
+        </span>
+      </div>
 
       {/* ── Mobile Menu Toggle ── */}
       <div className="lg:hidden pointer-events-auto relative z-50">
@@ -159,10 +156,10 @@ const Navbar = memo(function Navbar() {
               className="relative z-10 h-full w-full px-6 pt-safe-menu pb-safe-4 flex flex-col"
             >
               <div className={`w-full max-w-md mx-auto pb-4 border-b flex items-center justify-between ${isOnDarkSection ? 'border-white/20' : 'border-black/15'}`}>
-                <span className={`font-mono text-[10px] uppercase tracking-[0.22em] ${isOnDarkSection ? 'text-white/65' : 'text-black/45'}`}>Navigation Matrix</span>
+                <span className={`font-mono text-[11.5px] uppercase tracking-[0.18em] ${isOnDarkSection ? 'text-white/65' : 'text-black/55'}`}>Navigation Matrix</span>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                  <span className={`font-mono text-[10px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/35'}`}>MOBILE</span>
+                  <span className={`font-mono text-[11.5px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/45'}`}>MOBILE</span>
                 </div>
               </div>
 
@@ -177,7 +174,7 @@ const Navbar = memo(function Navbar() {
                     className={`w-full border-b last:border-b-0 py-4 flex items-center justify-between text-left active:translate-x-0.5 transition-transform ${isOnDarkSection ? 'border-white/20 active:bg-white/5' : 'border-black/15 active:bg-black/5'}`}
                   >
                     <div className="flex items-center gap-4">
-                      <span className={`text-[11px] font-mono font-bold tracking-[0.14em] ${isOnDarkSection ? 'text-white/50' : 'text-black/35'}`}>{String(i + 1).padStart(2, '0')}</span>
+                      <span className={`text-[12px] font-mono font-bold tracking-[0.14em] ${isOnDarkSection ? 'text-white/50' : 'text-black/45'}`}>{String(i + 1).padStart(2, '0')}</span>
                       <span className={`text-[30px] leading-none font-black uppercase tracking-tight ${isOnDarkSection ? 'text-white' : 'text-black/90'}`}>{item.label}</span>
                     </div>
                     <span className={`w-8 h-8 rounded-full border flex items-center justify-center ${isOnDarkSection ? 'border-white/20' : 'border-black/15'}`}>
@@ -199,8 +196,8 @@ const Navbar = memo(function Navbar() {
               </Gsap.button>
 
               <div className={`w-full max-w-md mx-auto mt-5 pt-4 border-t flex flex-wrap items-center justify-between gap-x-3 gap-y-1 ${isOnDarkSection ? 'border-white/15' : 'border-black/10'}`}>
-                <span className={`font-mono text-[10px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/35'}`}>Select Section</span>
-                <span className={`font-mono text-[10px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/35'}`}>Tap To Navigate</span>
+                <span className={`font-mono text-[11.5px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/45'}`}>Select Section</span>
+                <span className={`font-mono text-[11.5px] tracking-[0.14em] ${isOnDarkSection ? 'text-white/55' : 'text-black/45'}`}>Tap To Navigate</span>
               </div>
             </Gsap.div>
           </Gsap.div>
@@ -211,31 +208,29 @@ const Navbar = memo(function Navbar() {
       <div className={`hidden lg:flex items-center pointer-events-auto absolute left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'top-6 scale-100' : 'top-8 scale-105'}`}>
         <div className={`flex items-center p-1.5 backdrop-blur-xl border shadow-[0_12px_40px_rgba(0,0,0,0.06)] rounded-full relative transition-colors duration-500 ${isOnDarkSection ? 'bg-black/25 border-white/25' : 'bg-white/70 border-black/5'}`}>
           {NAV_ITEMS.map((item, index) => (
-            <Magnetic key={item.sectionId}>
-              <button
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => scrollTo(item.sectionId)}
-                className={`relative px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] transition-colors ${isOnDarkSection ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
-              >
-                <span className="relative z-10">{item.label}</span>
-                {hoveredIndex === index && (
-                  <Gsap.div
-                    layoutId="navbar-pill"
-                    className={`absolute inset-0 rounded-full z-0 ${isOnDarkSection ? 'bg-white/10' : 'bg-black/5'}`}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </button>
-            </Magnetic>
+            <button
+              key={item.sectionId}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => scrollTo(item.sectionId)}
+              className={`relative px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] transition-colors ${isOnDarkSection ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}
+            >
+              <span className="relative z-10">{item.label}</span>
+              {hoveredIndex === index && (
+                <Gsap.div
+                  layoutId="navbar-pill"
+                  className={`absolute inset-0 rounded-full z-0 ${isOnDarkSection ? 'bg-white/10' : 'bg-black/5'}`}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+            </button>
           ))}
         </div>
       </div>
 
       {/* ── Desktop Right (Premium CTA) ── */}
       <div className="hidden lg:flex pointer-events-auto">
-        <Magnetic>
-          <button
+        <button
             onClick={() => scrollTo('contact-section')}
             className={`group relative overflow-hidden flex items-center gap-3 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] hover:shadow-[0_0_30px_rgba(163,230,53,0.3)] transition-all duration-500 ${isOnDarkSection ? 'bg-white text-black' : 'bg-black text-white'}`}
           >
@@ -247,7 +242,6 @@ const Navbar = memo(function Navbar() {
               <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:rotate-45 transition-transform duration-300" />
             </div>
           </button>
-        </Magnetic>
       </div>
 
     </nav>

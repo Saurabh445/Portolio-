@@ -70,12 +70,12 @@ const ExperienceItem = ({ experience, isExpanded, onToggle, index }) => {
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2.5 mb-3">
-                <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-[0.16em] text-black/45 border border-black/[0.1] px-2.5 py-1 rounded-[2px] inline-flex items-center gap-1.5">
+                <span className="font-mono text-[12px] md:text-[13.5px] uppercase tracking-[0.16em] text-black/55 border border-black/[0.1] px-2.5 py-1 rounded-[2px] inline-flex items-center gap-1.5">
                   <Calendar className="w-3 h-3" />
                   {experience.period}
                 </span>
                 {isCurrent && (
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] bg-lime-400 text-black px-2.5 py-1 rounded-[2px]">
+                  <span className="font-mono text-[12px] uppercase tracking-[0.16em] bg-lime-400 text-black px-2.5 py-1 rounded-[2px]">
                     Active Now
                   </span>
                 )}
@@ -89,12 +89,12 @@ const ExperienceItem = ({ experience, isExpanded, onToggle, index }) => {
                 {experience.role}
               </h3>
 
-              <p className="mt-2 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-black/45 inline-flex items-center gap-1.5">
+              <p className="mt-2 font-mono text-[12.5px] md:text-[14px] uppercase tracking-[0.16em] text-black/55 inline-flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5" />
                 {experience.company}
               </p>
 
-              <p className="mt-5 text-sm md:text-[15px] font-light leading-relaxed text-black/60 max-w-3xl">
+              <p className="mt-5 text-[16px] md:text-[16px] font-light leading-relaxed text-black/60 max-w-3xl">
                 {experience.impact}
               </p>
             </div>
@@ -124,7 +124,7 @@ const ExperienceItem = ({ experience, isExpanded, onToggle, index }) => {
               <div className="mt-2 ml-0 rounded-[6px] border border-black/[0.08] bg-[#F7F7F3] px-5 md:px-7 py-5 md:py-6">
                 <ul className="space-y-3 max-w-3xl">
                   {experience.description.map((point) => (
-                    <li key={point} className="flex items-start gap-2.5 text-black/60 font-light text-sm md:text-[15px] leading-relaxed">
+                    <li key={point} className="flex items-start gap-2.5 text-black/60 font-light text-[16px] md:text-[16px] leading-relaxed">
                       <span className="mt-2 h-1.5 w-1.5 rounded-full bg-black/30 shrink-0" />
                       <span>{point}</span>
                     </li>
@@ -135,7 +135,7 @@ const ExperienceItem = ({ experience, isExpanded, onToggle, index }) => {
                   {experience.stack.map((item) => (
                     <span
                       key={item}
-                      className="font-mono text-[9.5px] md:text-[10px] uppercase tracking-[0.14em] text-black/68 border border-black/[0.1] bg-white px-2.5 py-1 rounded-[2px]"
+                      className="font-mono text-[12.5px] uppercase tracking-[0.14em] text-black/68 border border-black/[0.1] bg-white px-2.5 py-1 rounded-[2px]"
                     >
                       {item}
                     </span>
@@ -168,13 +168,13 @@ const ProfessionalExperience = () => {
               Experience
             </h2>
 
-            <p className="mt-5 text-[14px] md:text-[15px] font-light leading-[1.8] text-black/60 max-w-[320px]">
+            <p className="mt-5 text-[16px] md:text-[16px] font-light leading-[1.8] text-black/60 max-w-[320px]">
               From early life and school in Mainpuri, to Engineering Physics at IIT (BHU) in Varanasi, to a Business Development internship at Plantitude Essentials, to founding Beckkon Systems.
             </p>
 
             <div className="mt-7 flex items-center gap-2 text-black/42">
               <Sparkles className="w-3.5 h-3.5" />
-              <p className="font-mono text-[9px] uppercase tracking-[0.16em]">Career timeline - expand each role</p>
+              <p className="font-mono text-[12px] uppercase tracking-[0.16em]">Career timeline - expand each role</p>
             </div>
           </aside>
 
@@ -190,7 +190,7 @@ const ProfessionalExperience = () => {
             ))}
 
             <div className="pl-9 pt-2">
-              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-black/28 inline-flex items-center gap-1.5">
+              <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-black/48 inline-flex items-center gap-1.5">
                 End of timeline
                 <ArrowUpRight className="w-3 h-3" />
               </span>

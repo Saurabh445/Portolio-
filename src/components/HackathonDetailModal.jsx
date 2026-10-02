@@ -98,7 +98,7 @@ function ImageCarousel() {
                 </button>
 
                 {/* Counter */}
-                <div className="absolute bottom-4 right-4 z-10 bg-black/40 backdrop-blur-md text-white px-3 py-1.5 rounded-full font-mono text-[10px] tracking-[0.12em] md:tracking-[0.16em] backdrop-saturate-150">
+                <div className="absolute bottom-4 right-4 z-10 bg-black/40 backdrop-blur-md text-white px-3 py-1.5 rounded-full font-mono text-[11.5px] tracking-[0.12em] md:tracking-[0.16em] backdrop-saturate-150">
                     {String(current + 1).padStart(2, '0')} / {String(len).padStart(2, '0')}
                 </div>
             </div>
@@ -168,7 +168,7 @@ export default function HackathonDetailModal({ isOpen, onClose }) {
                         <div className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-black/5">
                             <div className="px-6 md:px-10 py-4 flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <span className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-[#000] flex items-center gap-2">
+                                    <span className="font-mono text-[11.5px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-[#000] flex items-center gap-2">
                                         <Trophy size={14} className="text-lime-500" />
                                         Founder &amp; CEO
                                     </span>
@@ -188,7 +188,7 @@ export default function HackathonDetailModal({ isOpen, onClose }) {
 
                             {/* Title block */}
                             <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-                                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] md:tracking-[0.26em] text-black/40 mb-4">
+                                <p className="font-mono text-[11.5px] font-bold uppercase tracking-[0.18em] md:tracking-[0.18em] text-black/50 mb-4">
                                     Beckkon Systems Pvt. Ltd.
                                 </p>
 

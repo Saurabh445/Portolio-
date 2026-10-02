@@ -39,10 +39,10 @@ const TeamStats = ({ dark = false }) => (
         <div className={cx("text-[clamp(2.75rem,7vw,5rem)] font-bold leading-[0.85] tracking-[-0.06em]", TEXT.accent(dark))}>
           {number}
         </div>
-        <div className={cx("mt-4 font-mono text-[0.8125rem] font-bold uppercase tracking-[0.16em]", dark ? "text-white/85" : "text-black/80")}>
+        <div className={cx("mt-4 font-mono text-[0.875rem] font-bold uppercase tracking-[0.16em]", dark ? "text-white/85" : "text-black/80")}>
           {label}
         </div>
-        <div className={cx("mt-2 font-mono text-[0.6875rem] uppercase leading-[1.5] tracking-[0.12em]", dark ? "text-white/45" : "text-black/45")}>
+        <div className={cx("mt-2 font-mono text-[0.8125rem] uppercase leading-[1.5] tracking-[0.12em]", dark ? "text-white/55" : "text-black/55")}>
           {detail}
         </div>
         <span className={cx("absolute right-4 top-4 h-2 w-2 rounded-full", dark ? "bg-lime-300" : "bg-lime-500")} />
@@ -70,7 +70,7 @@ const TeamNetwork = ({ dark = false }) => (
             dark ? "border-white/15 bg-[#0A0A0A] text-white/80" : "border-black/10 bg-[#FAF9F6] text-black/75",
           )}
         >
-          <span className={cx("absolute right-3 top-3 text-[0.6875rem]", TEXT.accent(dark))}>
+          <span className={cx("absolute right-3 top-3 text-[0.8125rem]", TEXT.accent(dark))}>
             0{index + 1}
           </span>
           {item}
@@ -81,7 +81,7 @@ const TeamNetwork = ({ dark = false }) => (
       <span className="absolute left-0 right-0 top-1/2 h-px bg-lime-500/35" />
       <div
         className={cx(
-          "relative z-10 border px-7 py-4 font-mono text-[0.8125rem] font-bold uppercase tracking-[0.2em]",
+          "relative z-10 border px-7 py-4 font-mono text-[0.875rem] font-bold uppercase tracking-[0.2em]",
           dark ? "border-lime-300/50 bg-[#0A0A0A] text-lime-300" : "border-lime-500/50 bg-[#FAF9F6] text-lime-600",
         )}
       >
@@ -256,7 +256,7 @@ export default function LeadershipDetail({ onClose, mode }) {
                     <p>A good idea can start with one person.</p>
                     <p>But turning that idea into something real requires a team.</p>
                     <div className="mt-7 border border-white/15 bg-white/[0.05] p-5 md:mt-8 md:p-7">
-                      <div className="flex flex-wrap items-center gap-2 font-mono text-[0.75rem] font-bold uppercase leading-[1.5] tracking-[0.14em] text-lime-300/85 md:text-[0.8125rem]">
+                      <div className="flex flex-wrap items-center gap-2 font-mono text-[0.875rem] font-bold uppercase leading-[1.5] tracking-[0.14em] text-lime-300/85 md:text-[0.875rem]">
                         <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-lime-300" />
                         One idea / many people / one direction
                       </div>

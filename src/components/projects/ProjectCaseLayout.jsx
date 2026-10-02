@@ -15,7 +15,7 @@ function cloudinarySrc(originalUrl, width) {
 }
 
 const TechBadge = ({ children }) => (
-  <span className="px-3 py-1.5 bg-black/5 font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/80">
+  <span className="px-3 py-1.5 bg-black/5 font-mono text-[12.5px] md:text-[14px] font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/80">
     {children}
   </span>
 );
@@ -34,16 +34,16 @@ export default function ProjectCaseLayout({
       <div className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-black/5">
         <div className="max-w-6xl mx-auto px-6 md:px-10 py-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <span title={project.category} className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-black/40 flex items-center gap-2 min-w-0 truncate">
+            <span title={project.category} className="font-mono text-[12.5px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-black/50 flex items-center gap-2 min-w-0 truncate">
               {project.category}
             </span>
-            <span className="font-mono text-[10px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-black/30 border-l border-black/20 pl-3 shrink-0">
+            <span className="font-mono text-[12.5px] uppercase font-bold tracking-[0.12em] md:tracking-[0.16em] text-black/50 border-l border-black/20 pl-3 shrink-0">
               {project.year}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="shrink-0 flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 sm:px-5 py-2 text-[11px] sm:text-sm font-bold tracking-wide uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+            className="shrink-0 flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 sm:px-5 py-2 text-[14px] sm:text-sm font-bold tracking-wide uppercase hover:bg-black hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <ArrowUpRight className="rotate-[225deg]" size={16} />
             {closeLabel}
@@ -54,7 +54,7 @@ export default function ProjectCaseLayout({
       <div className="flex-1 overflow-y-auto">
         {/* ── Hero Section ──────────────────────── */}
         <section className="max-w-4xl mx-auto text-center flex flex-col items-center px-6 md:px-10 pt-16 md:pt-20 pb-12">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] md:tracking-[0.26em] text-black/40 mb-4">
+          <p className="font-mono text-[12.5px] font-bold uppercase tracking-[0.18em] md:tracking-[0.18em] text-black/50 mb-4">
             Project Case Study
           </p>
 
@@ -116,7 +116,7 @@ export default function ProjectCaseLayout({
             <div className="space-y-16">
               {project.features && project.features.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
+                  <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/50 mb-6 flex items-center gap-3">
                     <span className="w-6 h-[1px] bg-black/20" /> Key Features
                   </h2>
                   <ul className="space-y-4 text-base leading-relaxed text-black/80">
@@ -135,7 +135,7 @@ export default function ProjectCaseLayout({
             <div className="space-y-16">
               {project.impact && project.impact.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
+                  <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/50 mb-6 flex items-center gap-3">
                     <span className="w-6 h-[1px] bg-black/20" /> Outcome & Impact
                   </h2>
                   <ul className="space-y-4 text-base leading-relaxed text-black/80">
@@ -155,7 +155,7 @@ export default function ProjectCaseLayout({
           <div className="mt-12 lg:mt-16 border-t border-black/10 pt-12 lg:pt-16">
             {project.stack && project.stack.length > 0 && (
               <div>
-                <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/40 mb-6 flex items-center gap-3">
+                <h2 className="text-xs font-mono font-bold uppercase tracking-[0.12em] md:tracking-[0.16em] text-black/50 mb-6 flex items-center gap-3">
                   <span className="w-6 h-[1px] bg-black/20" /> Tech Stack
                 </h2>
                 <div className="flex flex-wrap gap-2">

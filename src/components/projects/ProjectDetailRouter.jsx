@@ -10,13 +10,13 @@ const LoadingState = () => (
 
 const NotFoundState = ({ onClose }) => (
   <div className="flex-1 flex flex-col items-center justify-center text-center gap-6 px-6 py-24">
-    <span className="font-mono text-[10px] uppercase font-bold tracking-[0.18em] text-black/40">
+    <span className="font-mono text-[12.5px] uppercase font-bold tracking-[0.18em] text-black/50">
       {'// 404_CASE_NOT_FOUND'}
     </span>
     <h1 className="text-[clamp(1.75rem,8vw,3rem)] font-black uppercase leading-[0.9] tracking-tighter text-black">
       Project <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>Unavailable</span>
     </h1>
-    <p className="text-sm md:text-base text-black/60 max-w-md leading-relaxed">
+    <p className="text-[16px] md:text-base text-black/60 max-w-md leading-relaxed">
       This case study does not exist or has been moved.
     </p>
     <button

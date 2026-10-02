@@ -135,7 +135,7 @@ const MyApproach = () => {
             transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:pb-3"
           >
-            <p className="text-sm md:text-base lg:text-lg text-white/55 leading-7 md:leading-8 max-w-xl">
+            <p className="text-[15px] md:text-base lg:text-lg text-white/55 leading-7 md:leading-8 max-w-xl">
               Every venture I run — hardware, IoT, software, data systems — moves
               through the same six steps. Each one hands a clear output to the
               next, and the last step loops all the way back to the first.
@@ -196,7 +196,7 @@ const MyApproach = () => {
 
                       <div className="relative border-t border-white/10 pt-6 transition-colors duration-500 group-hover/step:border-lime-400/60">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-lime-400">
+                          <span className="font-mono text-[11.5px] md:text-[13px] font-bold uppercase tracking-[0.16em] text-lime-400">
                             {step.kicker}
                           </span>
                         </div>
@@ -205,11 +205,11 @@ const MyApproach = () => {
                           {step.title}
                         </h3>
 
-                        <p className="mt-5 text-sm md:text-base text-white/55 leading-7 md:leading-8 max-w-[48ch]">
+                        <p className="mt-5 text-[15px] md:text-base text-white/55 leading-7 md:leading-8 max-w-[48ch]">
                           {step.body}
                         </p>
 
-                        <p className="mt-6 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.14em] text-white/30">
+                        <p className="mt-6 font-mono text-[11.5px] md:text-[13px] uppercase tracking-[0.14em] text-white/40">
                           <span className="text-lime-400/70">{step.output}</span>
                         </p>
                       </div>
@@ -258,7 +258,7 @@ const MyApproach = () => {
                   className="w-4 h-4 text-lime-400 shrink-0 animate-[spin_6s_linear_infinite]"
                   strokeWidth={2}
                 />
-                <p className="font-mono text-[10px] md:text-xs uppercase tracking-[0.16em] text-white/40 leading-5">
+                <p className="font-mono text-[11.5px] md:text-[13px] uppercase tracking-[0.16em] text-white/50 leading-5">
                   Loops back into{" "}
                   <span className="text-lime-400">01. Problem</span> — the cycle is
                   the method, not a one-off sequence.

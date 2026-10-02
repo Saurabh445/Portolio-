@@ -84,7 +84,7 @@ const RoleMap = ({ dark = false }) => (
           <span className={cx("sm:hidden", TEXT.accent(dark))} aria-hidden="true">→</span>
           {outcome}
         </span>
-        <span className={cx("hidden text-right text-[0.6875rem] font-normal sm:block", dark ? "text-white/35" : "text-black/35")}>
+        <span className={cx("hidden text-right text-[0.8125rem] font-normal sm:block", dark ? "text-white/45" : "text-black/45")}>
           0{index + 1}
         </span>
       </div>

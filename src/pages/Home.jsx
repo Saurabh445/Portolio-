@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, lazy, Suspense, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Cursor from '../components/Cursor';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import useLenis from '../hooks/useLenis';
@@ -46,7 +45,6 @@ export default function Home() {
     <div className="bg-[#FAF9F6] text-black selection:bg-lime-400 selection:text-black relative">
       {enableNoiseOverlay && <Suspense fallback={null}><NoiseOverlay /></Suspense>}
 
-      <Cursor />
       <Navbar />
       <HeroSection isRevealed={true} />
       <Suspense fallback={null}><AboutSection /></Suspense>

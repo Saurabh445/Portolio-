@@ -171,7 +171,7 @@ const GitHubStats = memo(function GitHubStats() {
                     className="flex items-center gap-4 mb-16 md:mb-20"
                 >
                     <div className="w-2 h-2 bg-lime-400 rounded-full animate-pulse" />
-                    <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-[0.18em] md:tracking-[0.26em] text-white/40">
+                    <span className="font-mono text-[12.5px] md:text-[14px] font-bold uppercase tracking-[0.18em] md:tracking-[0.18em] text-white/50">
                         05. Source_Metrics
                     </span>
                     <div className="flex-1 h-[1px] bg-white/10" />
@@ -221,7 +221,7 @@ const GitHubStats = memo(function GitHubStats() {
                         <div className="bg-[#0A0A0A] p-6 lg:p-8 flex flex-col justify-between aspect-square group hover:bg-[#111111] transition-colors">
                             <div className="flex items-center justify-between text-white/40 group-hover:text-lime-400 transition-colors">
                                 <Code size={20} />
-                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">REPOS</span>
+                                <span className="font-mono text-[12.5px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">REPOS</span>
                             </div>
                             <div>
                                 <p className="text-4xl lg:text-6xl text-white font-black tracking-tighter group-hover:text-lime-400 transition-colors">
@@ -234,7 +234,7 @@ const GitHubStats = memo(function GitHubStats() {
                         <div className="bg-[#0A0A0A] p-6 lg:p-8 flex flex-col justify-between aspect-square group hover:bg-[#111111] transition-colors">
                             <div className="flex items-center justify-between text-white/40 group-hover:text-lime-400 transition-colors">
                                 <Terminal size={20} />
-                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">TOTAL</span>
+                                <span className="font-mono text-[12.5px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">TOTAL</span>
                             </div>
                             <div>
                                 <p className="text-4xl lg:text-6xl text-white font-black tracking-tighter group-hover:text-lime-400 transition-colors">
@@ -247,7 +247,7 @@ const GitHubStats = memo(function GitHubStats() {
                         <div className="bg-[#0A0A0A] p-6 lg:p-8 flex flex-col justify-between aspect-square group hover:bg-[#111111] transition-colors">
                             <div className="flex items-center justify-between text-white/40 group-hover:text-lime-400 transition-colors">
                                 <Users size={20} />
-                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">FLWRS</span>
+                                <span className="font-mono text-[12.5px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">FLWRS</span>
                             </div>
                             <div>
                                 <p className="text-4xl lg:text-6xl text-white font-black tracking-tighter group-hover:text-lime-400 transition-colors">
@@ -260,7 +260,7 @@ const GitHubStats = memo(function GitHubStats() {
                         <div className="bg-[#0A0A0A] p-6 lg:p-8 flex flex-col justify-between aspect-square group hover:bg-[#111111] transition-colors">
                             <div className="flex items-center justify-between text-white/40 group-hover:text-lime-400 transition-colors">
                                 <Calendar size={20} />
-                                <span className="font-mono text-[10px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">EST.</span>
+                                <span className="font-mono text-[12.5px] uppercase tracking-[0.12em] md:tracking-[0.16em] font-bold">EST.</span>
                             </div>
                             <div>
                                 <p className="text-4xl lg:text-6xl text-white font-black tracking-tighter group-hover:text-lime-400 transition-colors">
@@ -281,9 +281,9 @@ const GitHubStats = memo(function GitHubStats() {
                         <div className="flex justify-between items-start border-b border-white/10 pb-6 mb-8">
                             <div>
                                 <h3 className="text-xl md:text-2xl font-bold uppercase text-white tracking-tight">System_Log</h3>
-                                <p className="font-sans text-sm md:text-sm text-white/55 mt-2">Annual code contribution density (last 12 months)</p>
+                                <p className="font-sans text-[16px] md:text-[16px] text-white/55 mt-2">Annual code contribution density (last 12 months)</p>
                             </div>
-                            <div className="hidden sm:flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] md:tracking-[0.16em] text-white/40">
+                            <div className="hidden sm:flex items-center gap-2 font-mono text-[14px] uppercase tracking-[0.12em] md:tracking-[0.16em] text-white/50">
                                 Less
                                 <span className="w-3 h-3 bg-[#111111] ml-2" />
                                 <span className="w-3 h-3 bg-[#1a2e05]" />
@@ -298,7 +298,7 @@ const GitHubStats = memo(function GitHubStats() {
                             <HeatmapCanvas data={contributionData} loading={loading} />
                         </div>
 
-                        <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center font-mono text-xs md:text-sm text-white/40">
+                        <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center font-mono text-[14px] md:text-sm text-white/50">
                             <div>
                                 <span className="text-lime-500 mr-2">$</span>
                                 user_query --status

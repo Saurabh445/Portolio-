@@ -36,7 +36,7 @@ const MarketFrame = ({ dark = false }) => (
             dark ? "border-white/15 text-white/80" : "border-black/10 text-black/75",
           )}
         >
-          <span className={cx("absolute right-3 top-3 text-[0.6875rem]", TEXT.accent(dark))}>
+          <span className={cx("absolute right-3 top-3 text-[0.8125rem]", TEXT.accent(dark))}>
             0{index + 1}
           </span>
           {item}
@@ -267,7 +267,7 @@ export default function BusinessDetail({ onClose, mode }) {
                         index === 0 || index === 5 ? "md:col-span-2" : "",
                       )}
                     >
-                      <span className="mb-6 block font-mono text-[0.6875rem] font-bold tracking-[0.16em] text-lime-300 md:mb-8">
+                      <span className="mb-6 block font-mono text-[0.8125rem] font-bold tracking-[0.16em] text-lime-300 md:mb-8">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <p className={cx(TYPE.body, TEXT.body(true))}>{line}</p>

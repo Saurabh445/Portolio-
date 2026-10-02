@@ -55,12 +55,12 @@ const AchievementCard = ({ achievement, index, onClick }) => {
         <div className="flex items-center justify-between gap-4 mb-7 md:mb-8">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             {/* Category tag */}
-            <span className="font-mono text-[8.5px] uppercase tracking-[0.18em] text-black/45 border border-black/[0.1] px-2.5 py-1 rounded-[2px] bg-white/90 shadow-[0_1px_4px_rgba(0,0,0,0.03)]">
+            <span className="font-mono text-[12px] uppercase tracking-[0.18em] text-black/55 border border-black/[0.1] px-2.5 py-1 rounded-[2px] bg-white/90 shadow-[0_1px_4px_rgba(0,0,0,0.03)]">
               {achievement.category}
             </span>
             {/* Rank badge */}
             {achievement.rank && (
-              <span className="font-mono text-[8.5px] font-bold uppercase tracking-[0.18em] bg-black text-white px-2.5 py-1 rounded-[2px]">
+              <span className="font-mono text-[12px] font-bold uppercase tracking-[0.18em] bg-black text-white px-2.5 py-1 rounded-[2px]">
                 {achievement.rank}
               </span>
             )}
@@ -68,7 +68,7 @@ const AchievementCard = ({ achievement, index, onClick }) => {
 
           <div className="flex shrink-0 items-center gap-3 sm:gap-4">
             {/* Year */}
-            <span className="font-mono text-[11px] font-bold text-black/45 tabular-nums">
+            <span className="font-mono text-[13px] font-bold text-black/55 tabular-nums">
               {achievement.year}
             </span>
             <span className="hidden sm:block h-6 w-px bg-black/[0.09]" />
@@ -82,7 +82,7 @@ const AchievementCard = ({ achievement, index, onClick }) => {
         {/* Title + copy — one shared left axis */}
         <div className="flex items-start gap-3 md:gap-4">
           {/* Index badge */}
-          <span className="mt-1 md:mt-1.5 shrink-0 font-mono text-[10px] text-black/22 font-bold tabular-nums select-none border border-black/[0.08] px-1.5 py-0.5 rounded-[2px] leading-none">
+          <span className="mt-1 md:mt-1.5 shrink-0 font-mono text-[12.5px] text-black/42 font-bold tabular-nums select-none border border-black/[0.08] px-1.5 py-0.5 rounded-[2px] leading-none">
             {String(index + 1).padStart(2, '0')}
           </span>
 
@@ -92,13 +92,13 @@ const AchievementCard = ({ achievement, index, onClick }) => {
             </h3>
 
             {/* Role label */}
-            <p className="font-mono text-[10px] md:text-[10.5px] uppercase tracking-[0.16em] text-black/50 mt-3">
+            <p className="font-mono text-[12.5px] md:text-[14px] uppercase tracking-[0.16em] text-black/50 mt-3">
               {achievement.event}
             </p>
 
             {/* Description */}
             {achievement.description && (
-              <p className="text-[13px] md:text-[14px] text-black/58 font-light leading-[1.75] mt-4">
+              <p className="text-[15px] md:text-[16px] text-black/58 font-light leading-[1.75] mt-4">
                 {achievement.description}
               </p>
             )}
@@ -107,7 +107,7 @@ const AchievementCard = ({ achievement, index, onClick }) => {
 
         {/* Footer CTA */}
         <div className="mt-7 md:mt-8 pt-5 border-t border-black/[0.07] flex">
-          <span className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 border border-black/[0.12] bg-white rounded-[3px] px-4 py-2.5 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-bold text-black/60 group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300">
+          <span className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 border border-black/[0.12] bg-white rounded-[3px] px-4 py-2.5 font-mono text-[12.5px] sm:text-[14px] uppercase tracking-[0.18em] font-bold text-black/60 group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300">
             Click to View Details
             <ArrowUpRight size={15} strokeWidth={2.2} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
           </span>
@@ -174,8 +174,8 @@ const AboutSection = memo(function AboutSection() {
 
                 {/* Name plate at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 px-5 pt-10 pb-4 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-20">
-                  <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-white/50 mb-0.5">Name</p>
-                  <p className="text-white font-bold text-[15px] tracking-wide leading-snug">Saurabh Kumar</p>
+                  <p className="font-mono text-[12px] uppercase tracking-[0.16em] text-white/50 mb-0.5">Name</p>
+                  <p className="text-white font-bold text-[16px] tracking-wide leading-snug">Saurabh Kumar</p>
                 </div>
 
                 {/* Corner brackets */}
@@ -221,7 +221,7 @@ const AboutSection = memo(function AboutSection() {
               className="flex items-center gap-3 mb-8 md:mb-9"
             >
 
-              <span className="font-mono text-[10px] md:text-[10.5px] uppercase tracking-[0.2em] text-black/35">
+              <span className="font-mono text-[12.5px] md:text-[14px] uppercase tracking-[0.16em] text-black/55">
                 Product Strategy · Business Development · Technology &amp; Execution · Leadership
               </span>
             </Gsap.div>
@@ -232,7 +232,7 @@ const AboutSection = memo(function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.14, duration: 0.75, ease: 'easeOut' }}
-              className="space-y-4 text-[15px] md:text-[15.5px] font-light text-black/60 leading-[1.88] max-w-[580px]"
+              className="space-y-4 text-[16px] md:text-[16px] font-light text-black/60 leading-[1.88] max-w-[580px]"
             >
               <p>
                 I'm <strong className="text-black font-semibold">Saurabh Kumar</strong>, an Engineering Physics student at IIT (BHU) and Founder &amp; CEO of Beckkon Systems. I work at the intersection of technology, product development, business strategy and execution.

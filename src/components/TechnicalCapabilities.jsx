@@ -68,7 +68,7 @@ const TechnicalCapabilities = memo(function TechnicalCapabilities() {
             return (
               <div
                 key={i}
-                className={`group/cell relative border-r-2 border-b-2 border-black p-4 sm:p-5 md:p-8 lg:p-10 min-h-[180px] md:min-h-[300px] lg:min-h-[340px] flex flex-col justify-between overflow-hidden cursor-crosshair transition-colors duration-500 hover:bg-[#0A0A0A] ${isActive ? '!bg-[#0A0A0A]' : ''}`}
+                className={`group/cell relative border-r-2 border-b-2 border-black p-4 sm:p-5 md:p-8 lg:p-10 min-h-[180px] md:min-h-[300px] lg:min-h-[340px] flex flex-col justify-between overflow-hidden transition-colors duration-500 hover:bg-[#0A0A0A] ${isActive ? '!bg-[#0A0A0A]' : ''}`}
               >
                 {/* Number & Icon Row */}
                 <div className="flex justify-between items-start relative z-10">
@@ -85,19 +85,19 @@ const TechnicalCapabilities = memo(function TechnicalCapabilities() {
 
                 {/* Title & Desc Row */}
                 <div className="relative z-10 mt-auto">
-                  <h3 className={`text-[14px] sm:text-base md:text-2xl lg:text-3xl font-black uppercase text-black tracking-tight leading-[1.1] mb-1 md:mb-2 break-words hyphens-none group-hover/cell:text-lime-400 transition-colors duration-500 ${isActive ? '!text-lime-400' : ''}`}>
+                  <h3 className={`text-[15px] sm:text-base md:text-2xl lg:text-3xl font-black uppercase text-black tracking-tight leading-[1.1] mb-1 md:mb-2 break-words hyphens-none group-hover/cell:text-lime-400 transition-colors duration-500 ${isActive ? '!text-lime-400' : ''}`}>
                     {cap.title}
                   </h3>
 
                   {/* Desktop Hover Description */}
                   <div className={`hidden md:block h-0 opacity-0 group-hover/cell:h-[80px] group-hover/cell:opacity-100 group-hover/cell:mt-4 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive ? '!h-[80px] !opacity-100 !mt-4' : ''}`}>
-                    <p className={`text-sm border-l-2 border-lime-400 pl-4 text-white/80 font-mono leading-7 transform translate-y-4 group-hover/cell:translate-y-0 transition-transform duration-500 delay-100 ${isActive ? '!translate-y-0' : ''}`}>
+                    <p className={`text-[15px] border-l-2 border-lime-400 pl-4 text-white/80 font-mono leading-[1.7] transform translate-y-4 group-hover/cell:translate-y-0 transition-transform duration-500 delay-100 ${isActive ? '!translate-y-0' : ''}`}>
                       {cap.desc}
                     </p>
                   </div>
 
                   {/* Mobile Always Visible Description — smaller text */}
-                  <p className={`md:hidden mt-1 text-[11px] border-l-2 border-black group-hover/cell:border-lime-400 pl-3 text-black/70 group-hover/cell:text-white/80 font-mono leading-5 break-words transition-colors duration-500 ${isActive ? '!border-lime-400 !text-white/80' : ''}`}>
+                  <p className={`md:hidden mt-1 text-[13px] border-l-2 border-black group-hover/cell:border-lime-400 pl-3 text-black/70 group-hover/cell:text-white/80 font-mono leading-[1.45] break-words transition-colors duration-500 ${isActive ? '!border-lime-400 !text-white/80' : ''}`}>
                     {cap.desc}
                   </p>
                 </div>
@@ -109,11 +109,11 @@ const TechnicalCapabilities = memo(function TechnicalCapabilities() {
           {(() => {
             const isGhostActive = activeIndex === CAPABILITIES.length;
             return (
-              <div className={`flex border-r-2 border-b-2 border-black p-4 sm:p-5 md:p-8 lg:p-10 min-h-[180px] md:min-h-[300px] lg:min-h-[340px] bg-transparent flex-col justify-center items-center text-center group/ghost hover:bg-[#0A0A0A] transition-colors duration-500 cursor-crosshair ${isGhostActive ? '!bg-[#0A0A0A]' : ''}`}>
+              <div className={`flex border-r-2 border-b-2 border-black p-4 sm:p-5 md:p-8 lg:p-10 min-h-[180px] md:min-h-[300px] lg:min-h-[340px] bg-transparent flex-col justify-center items-center text-center group/ghost hover:bg-[#0A0A0A] transition-colors duration-500 ${isGhostActive ? '!bg-[#0A0A0A]' : ''}`}>
                 <div className={`w-10 h-10 md:w-16 md:h-16 rounded-full border-2 border-black group-hover/ghost:border-lime-400 flex items-center justify-center mb-4 md:mb-6 animate-[spin_10s_linear_infinite] group-hover/ghost:animate-[spin_3s_linear_infinite] transition-all duration-500 ${isGhostActive ? '!border-lime-400 !animate-[spin_3s_linear_infinite]' : ''}`}>
                   <div className={`w-1.5 h-1.5 md:w-2 md:h-2 bg-black group-hover/ghost:bg-lime-400 rounded-full transition-colors duration-500 ${isGhostActive ? '!bg-lime-400' : ''}`} />
                 </div>
-                <span className={`font-mono text-[10px] tracking-[0.06em] sm:text-xs sm:tracking-[0.14em] md:tracking-[0.2em] uppercase text-black font-bold group-hover/ghost:text-lime-400 transition-colors duration-500 ${isGhostActive ? '!text-lime-400' : ''}`}>
+                <span className={`font-mono text-[11.5px] tracking-[0.06em] sm:text-[13px] sm:tracking-[0.14em] md:tracking-[0.16em] uppercase text-black font-bold group-hover/ghost:text-lime-400 transition-colors duration-500 ${isGhostActive ? '!text-lime-400' : ''}`}>
                   Continuously<br />Evolving
                 </span>
               </div>

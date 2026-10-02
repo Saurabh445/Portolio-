@@ -34,14 +34,14 @@ const SignalPanel = () => (
           key={item}
           className="relative flex min-h-24 items-end border border-black/10 bg-[#FAF9F6]/90 p-3 sm:min-h-28 sm:p-4"
         >
-          <span className="absolute right-3 top-3 font-mono text-[0.6875rem] text-black/35">
+          <span className="absolute right-3 top-3 font-mono text-[0.8125rem] text-black/45">
             0{index + 1}
           </span>
           <span className={cx(TYPE.node, "text-black/75")}>{item}</span>
         </div>
       ))}
     </div>
-    <div className="mt-4 flex items-center justify-between gap-3 px-1 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-black/45">
+    <div className="mt-4 flex items-center justify-between gap-3 px-1 font-mono text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-black/55">
       <span>Physical input</span>
       <span className="h-px flex-1 bg-black/10" />
       <span>Connected product</span>

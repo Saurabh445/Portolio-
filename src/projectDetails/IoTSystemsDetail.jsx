@@ -33,7 +33,7 @@ const SignalNetwork = () => (
           key={item}
           className="relative flex min-h-24 items-end border border-black/10 bg-[#FAF9F6]/90 p-3 sm:min-h-28 sm:p-4"
         >
-          <span className="absolute right-3 top-3 font-mono text-[0.6875rem] text-black/35">
+          <span className="absolute right-3 top-3 font-mono text-[0.8125rem] text-black/45">
             0{index + 1}
           </span>
           <span className={cx(TYPE.node, "text-black/75")}>{item}</span>

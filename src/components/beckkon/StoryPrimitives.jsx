@@ -25,10 +25,10 @@ export const Chapter = ({ index, title, tone = 'light', className = '', children
     return (
         <div className={className}>
             <Reveal className="flex items-center gap-3">
-                <span className={`font-mono text-[10px] font-bold tabular-nums border px-2 py-1 rounded-[2px] leading-none ${dark ? 'border-white/25 text-lime-400' : 'border-black/10 text-black/45'}`}>
+                <span className={`font-mono text-[12.5px] font-bold tabular-nums border px-2 py-1 rounded-[2px] leading-none ${dark ? 'border-white/25 text-lime-400' : 'border-black/10 text-black/55'}`}>
                     {index}
                 </span>
-                <span className={`font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-[0.22em] whitespace-nowrap ${dark ? 'text-white/70' : 'text-black/45'}`}>
+                <span className={`font-mono text-[12.5px] md:text-[14px] font-bold uppercase tracking-[0.16em] whitespace-nowrap ${dark ? 'text-white/70' : 'text-black/55'}`}>
                     {title}
                 </span>
                 <span className={`flex-1 h-px min-w-[12px] ${dark ? 'bg-white/15' : 'bg-black/[0.1]'}`} />
@@ -47,7 +47,7 @@ export const ChapterTitle = ({ children, tone = 'light', className = '' }) => (
 
 /* ─── Body copy ───────────────────────────────────────────── */
 export const Lead = ({ children, tone = 'light', className = '' }) => (
-    <p className={`text-[15px] md:text-[17px] font-light leading-[1.75] ${tone === 'dark' ? 'text-white/70' : 'text-black/60'} ${className}`}>
+    <p className={`text-[16px] md:text-[17px] font-light leading-[1.75] ${tone === 'dark' ? 'text-white/70' : 'text-black/60'} ${className}`}>
         {children}
     </p>
 );
@@ -67,14 +67,14 @@ export const Band = ({ children, className = '' }) => (
 
 /* ─── Mono chip ───────────────────────────────────────────── */
 export const Chip = ({ children, tone = 'light', className = '' }) => (
-    <span className={`inline-flex items-center font-mono text-[10px] md:text-[11px] uppercase tracking-[0.14em] border px-3 py-2 rounded-[2px] leading-none ${tone === 'dark' ? 'border-white/20 text-white/75' : 'border-black/10 text-black/60'} ${className}`}>
+    <span className={`inline-flex items-center font-mono text-[12.5px] md:text-[14px] uppercase tracking-[0.14em] border px-3 py-2 rounded-[2px] leading-none ${tone === 'dark' ? 'border-white/20 text-white/75' : 'border-black/10 text-black/60'} ${className}`}>
         {children}
     </span>
 );
 
 /* ─── Small mono eyebrow ──────────────────────────────────── */
 export const Eyebrow = ({ children, tone = 'light', className = '' }) => (
-    <span className={`font-mono text-[9.5px] md:text-[10px] font-bold uppercase tracking-[0.24em] ${tone === 'dark' ? 'text-lime-400' : 'text-black/35'} ${className}`}>
+    <span className={`font-mono text-[12.5px] font-bold uppercase tracking-[0.18em] ${tone === 'dark' ? 'text-lime-400' : 'text-black/55'} ${className}`}>
         {children}
     </span>
 );
@@ -105,7 +105,7 @@ export const Rail = ({ steps, tone = 'light' }) => {
                 <li key={step} className="relative flex gap-4 md:gap-6 pb-8 last:pb-0">
                     <Reveal
                         delay={0.06 * i}
-                        className={`relative z-10 shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-full border flex items-center justify-center font-mono text-[10px] md:text-[11px] font-bold tabular-nums ${node}`}
+                        className={`relative z-10 shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-full border flex items-center justify-center font-mono text-[12.5px] md:text-[14px] font-bold tabular-nums ${node}`}
                     >
                         {String(i + 1).padStart(2, '0')}
                     </Reveal>

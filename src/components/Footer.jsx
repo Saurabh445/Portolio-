@@ -62,7 +62,7 @@ const Footer = memo(function Footer() {
 
             {/* Supporting copy — desktop only */}
             <div className="hidden lg:block mt-9 max-w-[460px]">
-              <p className="text-[15px] text-white/55 font-light leading-[1.8]">
+              <p className="text-[16px] text-white/55 font-light leading-[1.8]">
                 Founder &amp; CEO at Beckkon Systems. Building products, teams and ventures at the
                 intersection of technology and business.
               </p>
@@ -73,12 +73,12 @@ const Footer = memo(function Footer() {
                     <span className="absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-60 animate-ping" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-lime-400" />
                   </span>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-lime-400">
+                  <span className="font-mono text-[11.5px] font-bold uppercase tracking-[0.16em] text-lime-400">
                     Available for work
                   </span>
                 </span>
 
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">
+                <span className="inline-flex items-center gap-2 font-mono text-[11.5px] uppercase tracking-[0.16em] text-white/50">
                   <MapPin size={13} strokeWidth={2.2} className="text-lime-400/70" />
                   Varanasi, India
                 </span>
@@ -90,11 +90,11 @@ const Footer = memo(function Footer() {
           <div className="lg:w-1/2">
             {/* Column heading — desktop only */}
             <div className="hidden lg:flex items-center gap-3 mb-6">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+              <span className="font-mono text-[11.5px] font-bold uppercase tracking-[0.16em] text-white/50">
                 Direct channels
               </span>
               <div className="flex-1 h-px bg-gradient-to-r from-white/[0.12] to-transparent" />
-              <span className="font-mono text-[10px] tabular-nums text-white/25">
+              <span className="font-mono text-[11.5px] tabular-nums text-white/35">
                 06
               </span>
             </div>
@@ -114,10 +114,10 @@ const Footer = memo(function Footer() {
                     <Icon size={17} strokeWidth={2.2} className="hidden lg:block" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.18em] text-white/40 leading-none">
+                    <span className="block font-mono text-[11.5px] uppercase tracking-[0.14em] text-white/55 leading-none">
                       {label}
                     </span>
-                    <span className="mt-1 block font-mono text-[0.8125rem] lg:text-sm font-bold text-white/85 group-hover:text-lime-400 transition-colors leading-none truncate">
+                    <span className="mt-1 block font-mono text-[13px] lg:text-sm font-bold text-white/85 group-hover:text-lime-400 transition-colors leading-none truncate">
                       {/* Phones keep the short CTA label; desktop reveals the real address */}
                       <span className="lg:hidden">{short}</span>
                       <span className="hidden lg:inline">{value}</span>
@@ -139,7 +139,7 @@ const Footer = memo(function Footer() {
                   key={sectionId}
                   type="button"
                   onClick={() => scrollToSection(sectionId)}
-                  className="group font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-white/45 hover:text-lime-400 transition-colors duration-300 inline-flex items-center gap-1.5"
+                  className="group font-mono text-[12px] font-bold uppercase tracking-[0.16em] text-white/55 hover:text-lime-400 transition-colors duration-300 inline-flex items-center gap-1.5"
                 >
                   {label}
                   <ArrowUpRight
@@ -155,7 +155,7 @@ const Footer = memo(function Footer() {
 
         {/* Bottom bar — desktop only */}
         <div className="hidden lg:flex items-center justify-between gap-6 mt-14 pt-8 border-t border-white/[0.08]">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-[0.16em] text-white/30">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[11.5px] uppercase tracking-[0.16em] text-white/40">
             <span>© {new Date().getFullYear()} Saurabh Kumar</span>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <span>Founder &amp; CEO, Beckkon Systems</span>
@@ -168,7 +168,7 @@ const Footer = memo(function Footer() {
             onClick={scrollToTop}
             className="group inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] pl-5 pr-2 py-2 hover:border-lime-400/60 hover:bg-lime-400/10 transition-all duration-300 active:scale-[0.98]"
           >
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white/60 group-hover:text-lime-400 transition-colors">
+            <span className="font-mono text-[11.5px] font-bold uppercase tracking-[0.16em] text-white/60 group-hover:text-lime-400 transition-colors">
               Back to top
             </span>
             <span className="w-8 h-8 rounded-full bg-lime-400 text-black flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5">

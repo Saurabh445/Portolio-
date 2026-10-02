@@ -76,7 +76,7 @@ export const SECTION_REGISTRY = [
   },
   {
     id: 'scroll_to_capabilities',
-    label: 'Technical Capabilities / What I Can Do',
+    label: 'Skills and Capabilities / What I Can Do',
     elementId: 'capabilities-section',
     synonyms: [
       'capabilities', 'kemampuan', 'keahlian', 'bisa apa',

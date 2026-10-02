@@ -287,6 +287,38 @@ html.lenis body {
   .pr-safe-4 {
     padding-right: max(1rem, env(safe-area-inset-right));
   }
+
+  /* Opt a scroll container back into a visible scrollbar.
+     The global `::-webkit-scrollbar { display: none }` above kills every
+     scrollbar site-wide (the page relies on Lenis instead), so scroll
+     containers like the Beckkon modal were scrollable but gave no
+     affordance. This re-enables and styles it just for opted-in elements. */
+  .scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.35) rgba(0, 0, 0, 0.04);
+  }
+
+  .scrollbar-visible::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+  }
+
+  .scrollbar-visible::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 999px;
+  }
+
+  .scrollbar-visible::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    transition: background-color 0.3s ease;
+  }
+
+  .scrollbar-visible::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.55);
+  }
 }
 
 /* ============================================
